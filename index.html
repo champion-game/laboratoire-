@@ -87,6 +87,7 @@ aside.side{display:flex;flex-direction:column;gap:22px;min-height:0}
 .filter.active svg{fill:var(--gold-hi)}
 .filter.active::after{content:"";position:absolute;right:-12px;top:50%;margin-top:-6px;border:6px solid transparent;border-left-color:var(--gold)}
 .filter .count{margin-left:auto;font-size:14px;color:var(--muted)}
+.view-link{display:block;text-align:center;padding:9px;font-family:"Oswald";text-transform:uppercase;font-size:15px;color:#f8e7bd;text-decoration:none;border:1px solid var(--gold);border-radius:4px;background:#3a2d14}
 .search{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#1a1816;
   border:2px solid #0b0a09;border-radius:6px;box-shadow:inset 0 0 0 1px #3b3833}
 .search svg{width:26px;height:26px;fill:none;stroke:#a89b80;stroke-width:2.5}
@@ -282,6 +283,7 @@ aside.side{display:flex;flex-direction:column;gap:22px;min-height:0}
 <main>
   <aside class="side">
     <div class="filters" id="filters"></div>
+    <a class="view-link" href="classeur.html">Voir en classeur ›</a>
     <label class="search">
       <svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l6 6"/></svg>
       <input id="q" type="search" placeholder="Rechercher..." autocomplete="off">
