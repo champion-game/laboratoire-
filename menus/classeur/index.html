@@ -31,7 +31,7 @@ body{
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:inherit}
 
-/* ================= HEADER (shared look with index.html) ================= */
+/* ================= HEADER  ================= */
 header{position:relative;height:110px;overflow:hidden;
   background:linear-gradient(#e6c9a0 0%,#c98e6a 45%,#5a2f22 80%,#1c1511 100%);
   border-bottom:4px solid #0c0a08;box-shadow:0 6px 18px rgba(0,0,0,.7)}
@@ -130,7 +130,7 @@ aside.side{display:flex;flex-direction:column;gap:16px;min-height:0}
 .slot .card{position:absolute;inset:0;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
 @media (hover:hover){.slot:hover .card{transform:translateY(-6%) rotate(-1.5deg)}}
 
-/* ================= CARD (same component as index.html) ================= */
+/* ================= CARD  ================= */
 .card{container-type:inline-size;position:relative;aspect-ratio:2/3;cursor:pointer;border-radius:3cqw;box-shadow:0 2cqw 4cqw rgba(0,0,0,.45)}
 .face{position:absolute;inset:0;border-radius:3cqw;overflow:hidden}
 .frame{position:absolute;inset:0;border-radius:3cqw;
@@ -287,7 +287,7 @@ aside.side{display:flex;flex-direction:column;gap:16px;min-height:0}
     </g>
   </svg>
   <div class="header-row">
-    <a class="logo" href="index.html"><span class="w">BARRI</span><span class="r">CARD</span></a>
+    <a class="logo" href="#"><span class="w">BARRI</span><span class="r">CARD</span></a>
     <nav class="tabs" aria-label="Navigation principale">
       <a class="tab active" href="#">Collection</a><a class="tab" href="#">Decks</a><a class="tab" href="#">Camp</a><a class="tab" href="#">Missions</a>
     </nav>
@@ -300,7 +300,7 @@ aside.side{display:flex;flex-direction:column;gap:16px;min-height:0}
     <div class="banner">Collection</div>
     <div class="filters" id="filters"></div>
     <div class="progress-box"><strong>47 / 120</strong> <span>cartes découvertes</span><div class="bar"><b style="width:39%"></b></div></div>
-    <div class="view-switch"><span>Classeur</span><a href="index.html">Grille</a></div>
+    <div class="view-switch"><span>Classeur</span><span>Grille</span></div>
   </aside>
 
   <section class="binder-wrap">
@@ -414,7 +414,7 @@ const catLabel = id => CATEGORIES.find(c=>c.id===id).label;
 const RIVETS = [[4.4,2.9],[95.6,2.9],[4.4,55.4],[95.6,55.4],[4.4,96.8],[95.6,96.8]].map(([x,y])=>`<i class="rv" style="left:${x}%;top:${y}%"></i>`).join('');
 function cardHTML(c, withText=false){
   return `<div class="face"><div class="frame"></div>
-      <div class="panel art-panel"><div class="inner"><img src="assets/cards/tm-${c.art}.webp" alt="" draggable="false"></div></div>
+      <div class="panel art-panel"><div class="inner"><img src="assets/tm-${c.art}.webp" alt="" draggable="false"></div></div>
       <div class="panel text-panel"><div class="inner"></div></div>${RIVETS}</div>
     <div class="name">${c.name}</div>
     ${withText?`<div class="text">${c.desc}</div>`:''}
