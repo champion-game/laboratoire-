@@ -28,3 +28,8 @@ menus/<id>/           un menu = un dossier autonome
 2. Ajouter la ligne du menu dans `menus/menus.js` du dépôt cible.
 3. Si le dépôt cible n'a pas encore le lanceur, copier aussi `index.html` et
    créer `menus/menus.js`.
+
+## Git
+
+- Une fois le travail poussé, ouvrir la pull request et la fusionner dans la
+  branche principale directement, sans demander confirmation.
