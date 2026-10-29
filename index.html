@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barricard — Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Bebas+Neue&family=Alegreya+Sans:wght@500;700&family=Alegreya+SC:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#141210; --bg2:#1d1a17; --panel:#24211d; --panel2:#2c2823;
+  --metal:#3a3a37; --metal-hi:#5a5852; --rivet:#8b8578;
+  --gold:#c99a3b; --gold-hi:#f2c75c; --bronze:#8a4b1f;
+  --red:#b3261e; --red-hi:#e0402f; --blue:#1f4a6e; --blue-hi:#3a76a3;
+  --parch:#e9d7b0; --parch2:#d6bd8b; --ink:#231d17;
+  --text:#d9cdb4; --muted:#9a8f7a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  background:
+    radial-gradient(ellipse at 50% 0%, #2a2017 0%, transparent 60%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.012) 0 2px, transparent 2px 6px),
+    var(--bg);
+  color:var(--text);font-family:"Alegreya Sans",system-ui,sans-serif;
+  min-height:100vh;
+}
+button{font:inherit;color:inherit;cursor:pointer}
+
+/* ---------- HEADER ---------- */
+header{
+  position:relative;height:130px;overflow:hidden;
+  background:linear-gradient(#e6c9a0 0%,#c98e6a 45%,#5a2f22 80%,#1c1511 100%);
+  border-bottom:4px solid #0c0a08;
+  box-shadow:0 6px 18px rgba(0,0,0,.7);
+}
+header .sky{position:absolute;inset:0;width:100%;height:100%}
+.header-row{position:relative;z-index:2;display:flex;align-items:center;gap:20px;height:100%;padding:0 18px}
+.logo{
+  font-family:"Bebas Neue",Impact,sans-serif;font-size:64px;letter-spacing:1px;line-height:1;
+  padding:6px 18px 2px;transform:rotate(-2deg);
+  background:linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.6) 85%,transparent);
+  clip-path:polygon(2% 8%,98% 0,100% 90%,0 100%);
+  text-shadow:2px 2px 0 #000,-1px -1px 0 #000;
+  user-select:none;flex-shrink:0;
+}
+.logo .w{color:#efe6d4}
+.logo .r{color:var(--red-hi)}
+nav.tabs{
+  display:flex;gap:4px;padding:8px;margin-left:auto;margin-right:auto;
+  background:linear-gradient(#2b2a27,#1b1a18);border:2px solid #0b0a09;border-radius:6px;
+  box-shadow:inset 0 1px 0 #4a4843,0 4px 10px rgba(0,0,0,.6);position:relative;
+}
+.tab{
+  font-family:"Oswald",sans-serif;font-weight:500;font-size:22px;letter-spacing:.5px;text-transform:uppercase;
+  padding:10px 28px;border:2px solid #0d0c0b;border-radius:4px;color:#b9b2a3;
+  background:linear-gradient(#3a3935,#262522);box-shadow:inset 0 1px 0 #55534d;
+}
+.tab:hover{color:#efe6d4}
+.tab.active{
+  color:#f6dcc2;background:linear-gradient(#a3281d,#5e120c);border-color:#2a0603;
+  box-shadow:inset 0 1px 0 #d4563f,0 0 12px rgba(224,64,47,.45);
+}
+.gear{
+  width:64px;height:64px;flex-shrink:0;border:2px solid #0b0a09;border-radius:6px;
+  background:linear-gradient(#34332f,#1d1c1a);box-shadow:inset 0 1px 0 #4a4843;
+  display:grid;place-items:center;
+}
+.gear svg{width:36px;height:36px;fill:#b38a3e;transition:transform .5s}
+.gear:hover svg{transform:rotate(90deg)}
+.rivets{position:relative}
+.rivets::before,.rivets::after{
+  content:"";position:absolute;width:8px;height:8px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#c8c0ae,#5d574c);top:4px;
+}
+.rivets::before{left:4px}.rivets::after{right:4px}
+
+/* ---------- LAYOUT ---------- */
+main{
+  display:grid;grid-template-columns:250px minmax(0,1fr) minmax(360px,520px);
+  gap:22px;padding:22px;max-width:1600px;margin:0 auto;
+  height:calc(100vh - 130px);
+}
+
+/* ---------- SIDEBAR ---------- */
+aside.side{display:flex;flex-direction:column;gap:22px;min-height:0}
+.filters{
+  padding:6px;background:#1a1816;border:2px solid #0b0a09;border-radius:6px;
+  box-shadow:inset 0 0 0 1px #3b3833;display:flex;flex-direction:column;gap:6px;
+}
+.filter{
+  display:flex;align-items:center;gap:14px;padding:9px 12px;text-align:left;
+  font-family:"Oswald",sans-serif;font-weight:500;font-size:19px;text-transform:uppercase;letter-spacing:.3px;
+  color:#c9bfa9;background:linear-gradient(#2d2b27,#211f1c);border:1px solid #0d0c0b;border-radius:4px;
+  box-shadow:inset 0 1px 0 #44413b;position:relative;
+}
+.filter svg{width:30px;height:30px;flex-shrink:0;fill:#c2a77a}
+.filter:hover{color:#f0e3c6}
+.filter.active{
+  color:#f8e7bd;background:linear-gradient(#5a4720,#3a2d14);border-color:#c99a3b;
+  box-shadow:inset 0 1px 0 #8a7136,0 0 0 1px #6b5322;
+}
+.filter.active svg{fill:var(--gold-hi)}
+.filter.active::after{
+  content:"";position:absolute;right:-12px;top:50%;margin-top:-6px;
+  border:6px solid transparent;border-left-color:var(--gold);
+}
+.filter .count{margin-left:auto;font-size:14px;color:var(--muted)}
+.search{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;
+  background:#1a1816;border:2px solid #0b0a09;border-radius:6px;box-shadow:inset 0 0 0 1px #3b3833;
+}
+.search svg{width:26px;height:26px;fill:none;stroke:#a89b80;stroke-width:2.5}
+.search input{
+  flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);
+  font-family:"Oswald",sans-serif;font-size:18px;
+}
+.search input::placeholder{color:#7d735f}
+
+/* ---------- GRID ---------- */
+.grid-wrap{
+  position:relative;overflow-y:auto;padding:4px 18px 4px 4px;min-height:0;
+  scrollbar-width:thin;scrollbar-color:#4a463e #151311;
+}
+.grid-wrap::-webkit-scrollbar{width:10px}
+.grid-wrap::-webkit-scrollbar-track{background:#151311;border:1px solid #2d2a25}
+.grid-wrap::-webkit-scrollbar-thumb{background:linear-gradient(90deg,#3d3a34,#57524a);border-radius:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:22px}
+.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted);font-family:"Oswald";font-size:20px}
+
+/* ---------- CARD (shared) ---------- */
+.card{
+  --pad:9px;
+  position:relative;aspect-ratio:3/4;padding:var(--pad);border-radius:6px;
+  background:linear-gradient(145deg,#4b4a46,#2b2a27 60%,#1e1d1b);
+  border:2px solid #0d0c0b;box-shadow:0 6px 14px rgba(0,0,0,.55),inset 0 1px 0 #6a675f;
+  cursor:pointer;transition:transform .15s,box-shadow .15s;
+}
+.card:hover{transform:translateY(-3px)}
+.card.selected{
+  border-color:#e8b84a;
+  box-shadow:0 0 0 2px #8a6420,0 0 22px 4px rgba(242,199,92,.55),inset 0 1px 0 #f5d98a;
+}
+.card .corner{position:absolute;width:7px;height:7px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#d8cdb3,#6b6353)}
+.card .c1{top:3px;left:3px}.card .c2{top:3px;right:3px}.card .c3{bottom:3px;left:3px}.card .c4{bottom:3px;right:3px}
+.card .face{
+  position:relative;height:100%;display:flex;flex-direction:column;
+  background:linear-gradient(var(--parch),var(--parch2));
+  border:2px solid #9d7a3e;border-radius:3px;overflow:hidden;
+  box-shadow:inset 0 0 18px rgba(80,50,15,.45);
+}
+.art{position:relative;flex:1;min-height:0;overflow:hidden}
+.art svg{position:absolute;inset:0;width:100%;height:100%}
+.art::after{ /* paper grain */
+  content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.35;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(120,80,30,.35) 0 1px,transparent 2px) 0 0/13px 17px,
+    radial-gradient(circle at 70% 60%,rgba(90,60,25,.3) 0 1px,transparent 2px) 0 0/19px 11px;
+}
+.nameplate{
+  height:24%;margin:0 6px 6px;border:2px solid #b08a4a;border-radius:3px;
+  background:linear-gradient(#ead7ae,#d7bc87);box-shadow:inset 0 0 8px rgba(110,70,20,.35);
+}
+.gem{
+  position:absolute;display:grid;place-items:center;border-radius:50%;
+  font-family:"Bebas Neue",Impact,sans-serif;color:#fff;line-height:1;
+  text-shadow:0 2px 0 rgba(0,0,0,.6);z-index:3;
+}
+.gem.cost{background:radial-gradient(circle at 35% 30%,#c06a2c,var(--bronze) 60%,#4a230b);border:3px solid var(--gold);box-shadow:0 0 0 2px #1b120a,0 3px 6px rgba(0,0,0,.6)}
+.gem.atk{background:radial-gradient(circle at 35% 30%,#d2483a,var(--red) 55%,#4f0c08);border:3px solid #c9a35a;box-shadow:0 0 0 2px #1b120a,0 3px 6px rgba(0,0,0,.6)}
+.gem.hp{background:radial-gradient(circle at 35% 30%,#4f8bbb,var(--blue) 55%,#0d2234);border:3px solid #c9a35a;box-shadow:0 0 0 2px #1b120a,0 3px 6px rgba(0,0,0,.6)}
+.mini .gem{width:36px;height:36px;font-size:26px;padding-top:2px}
+.mini .gem.cost{top:2px;left:2px}
+.mini .gem.atk{bottom:2px;left:2px}
+.mini .gem.hp{bottom:2px;right:2px}
+
+/* ---------- DETAIL ---------- */
+.detail-wrap{min-height:0;display:flex;align-items:flex-start}
+.detail{
+  --pad:18px;width:100%;aspect-ratio:auto;height:100%;max-height:820px;cursor:default;
+  border-width:3px;border-radius:10px;
+  background:
+    linear-gradient(145deg,#4f4e49,#2e2d2a 55%,#1d1c1a);
+}
+.detail:hover{transform:none}
+.detail .corner{width:12px;height:12px;top:6px;left:6px}
+.detail .c2{left:auto;right:6px}.detail .c3{top:auto;bottom:6px}.detail .c4{top:auto;bottom:6px;left:auto;right:6px}
+.detail .face{border:4px solid #b58a3c;border-radius:6px;box-shadow:inset 0 0 0 2px #6b4f1e,inset 0 0 30px rgba(80,50,15,.4)}
+.detail .art{flex:1 1 60%}
+.detail .gem{width:96px;height:96px;font-size:72px;padding-top:6px;border-width:5px}
+.detail .gem.cost{top:4px;left:4px}
+.detail .gem.atk{bottom:4px;left:4px}
+.detail .gem.hp{bottom:4px;right:4px}
+.detail .title{
+  margin:0 -12px;padding:14px 10px;text-align:center;position:relative;z-index:2;
+  font-family:"Alegreya SC",Georgia,serif;font-size:38px;color:#1e1812;
+  background:linear-gradient(#efdcb3,#d8bd88);border:3px solid #a8823f;border-radius:4px;
+  box-shadow:0 0 0 3px #3a3631,0 4px 8px rgba(0,0,0,.4);
+}
+.detail .text{
+  flex:0 0 auto;min-height:150px;margin:16px 14px 14px;padding:16px 20px 60px;
+  font-size:24px;line-height:1.3;color:#2a221a;
+  border:2px solid #b08a4a;border-radius:4px;background:linear-gradient(#ecdab3,#dcc493);
+  box-shadow:inset 0 0 12px rgba(110,70,20,.3);
+}
+.detail .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.detail .tag{font-family:"Oswald";font-size:13px;text-transform:uppercase;letter-spacing:.5px;
+  padding:2px 8px;border-radius:3px;background:#3a2f22;color:#e9d7b0}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1200px){
+  main{grid-template-columns:220px minmax(0,1fr) minmax(300px,400px)}
+  .detail .gem{width:76px;height:76px;font-size:56px}
+  .detail .title{font-size:30px}
+  .detail .text{font-size:20px}
+}
+@media (max-width:900px){
+  header{height:auto}
+  .header-row{flex-wrap:wrap;padding:12px 16px;gap:10px}
+  .logo{font-size:44px}
+  .gear{width:48px;height:48px;margin-left:auto}
+  .gear svg{width:28px;height:28px}
+  nav.tabs{order:3;width:100%;margin:0;overflow-x:auto}
+  .tab{font-size:15px;padding:8px 8px;flex:1;white-space:nowrap}
+  main{display:flex;flex-direction:column;height:auto;padding:16px;gap:16px}
+  aside.side{gap:12px}
+  .filters{flex-direction:row;overflow-x:auto;scrollbar-width:none}
+  .filter{flex-shrink:0;font-size:15px;padding:7px 10px;gap:8px}
+  .filter svg{width:22px;height:22px}
+  .filter.active::after{display:none}
+  .filter .count{display:none}
+  .detail-wrap{order:-1}
+  .detail{height:auto;aspect-ratio:3/4;max-height:none}
+  .grid-wrap{overflow:visible;padding:4px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px}
+  .mini .gem{width:30px;height:30px;font-size:21px}
+}
+@media (max-width:480px){
+  .detail .gem{width:60px;height:60px;font-size:44px;border-width:4px}
+  .detail .title{font-size:24px;padding:8px}
+  .detail .text{font-size:17px;min-height:0;padding:10px 12px 52px;margin:10px}
+  .grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .card{--pad:6px}
+  .mini .gem{width:26px;height:26px;font-size:18px;border-width:2px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="sky" viewBox="0 0 1536 130" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ff4a2a"/><stop offset=".6" stop-color="#e2321c"/><stop offset="1" stop-color="#e2321c" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="690" cy="40" r="60" fill="url(#sun)" opacity=".9"/>
+    <g stroke="#7a2a1a" stroke-width="1" opacity=".5">
+      <line x1="690" y1="40" x2="520" y2="0"/><line x1="690" y1="40" x2="860" y2="0"/>
+      <line x1="690" y1="40" x2="420" y2="40"/><line x1="690" y1="40" x2="960" y2="40"/>
+    </g>
+    <g fill="#16110d">
+      <!-- palisade -->
+      <path d="M0 130V70l8-10 8 10v-6l8-10 8 10v-4l8-12 8 12v2l8-9 8 9v-3l8-10 8 10V130Z"/>
+      <path d="M0 95h1536v35H0Z"/>
+      <path d="M380 95V72l6-8 6 8v-4l6-8 6 8v-2l6-9 6 9v-3l6-8 6 8v-5l6-7 6 7V95Z"/>
+      <path d="M1000 95V76l6-8 6 8v-4l6-8 6 8v-2l6-9 6 9v-3l6-8 6 8V95Z"/>
+      <path d="M1250 95V70l6-8 6 8v-4l6-8 6 8v-2l6-9 6 9v-3l6-8 6 8v-5l6-7 6 7V95Z"/>
+      <!-- watchtowers -->
+      <g id="tower">
+        <path d="M-22 0h44l-6-10h-32Z"/>
+        <rect x="-20" y="0" width="40" height="16"/>
+        <path d="M-16 16h4l4 60h-4ZM12 16h4l-4 60h-4ZM-14 30h28v3h-28ZM-12 52h24v3h-24Z"/>
+        <path d="M-14 33l26 19-2 3-26-19ZM14 33l-26 19 2 3 26-19Z"/>
+      </g>
+      <use href="#tower" x="470" y="18"/>
+      <use href="#tower" x="1110" y="10"/>
+      <use href="#tower" x="1310" y="22"/>
+      <use href="#tower" x="1480" y="14"/>
+      <use href="#tower" x="300" y="34" transform="scale(1)"/>
+    </g>
+  </svg>
+  <div class="header-row">
+    <div class="logo"><span class="w">BARRI</span><span class="r">CARD</span></div>
+    <nav class="tabs rivets" aria-label="Navigation principale">
+      <button class="tab active">Collection</button>
+      <button class="tab">Decks</button>
+      <button class="tab">Camp</button>
+      <button class="tab">Missions</button>
+    </nav>
+    <button class="gear" aria-label="Paramètres">
+      <svg viewBox="0 0 24 24"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.6 7.6 0 0 0-1.7-1L15 3.3h-4l-.3 2.6a7.6 7.6 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.6 7.6 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7.6 7.6 0 0 0 1.7-1l2.5 1 2-3.5ZM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z" transform="translate(-1 0)"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <aside class="side">
+    <div class="filters" id="filters"></div>
+    <label class="search">
+      <svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l6 6"/></svg>
+      <input id="q" type="search" placeholder="Rechercher..." autocomplete="off">
+    </label>
+  </aside>
+
+  <section class="grid-wrap"><div class="grid" id="grid"></div></section>
+
+  <section class="detail-wrap" id="detail"></section>
+</main>
+
+<script>
+/* ================= ICONS (sidebar) ================= */
+const ICONS = {
+  toutes:'<svg viewBox="0 0 24 24"><rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/><rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/></svg>',
+  humains:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="5"/><path d="M2 23c0-6 4.5-9 10-9s10 3 10 9Z"/></svg>',
+  tireurs:'<svg viewBox="0 0 24 24"><path d="M11 1h2v4.1A7 7 0 0 1 18.9 11H23v2h-4.1A7 7 0 0 1 13 18.9V23h-2v-4.1A7 7 0 0 1 5.1 13H1v-2h4.1A7 7 0 0 1 11 5.1Zm1 6a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 3.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/></svg>',
+  murs:'<svg viewBox="0 0 24 24"><path d="M1 3h10v5H1Zm12 0h10v5H13ZM1 10h5v5H1Zm7 0h8v5H8Zm10 0h5v5h-5ZM1 17h10v5H1Zm12 0h10v5H13Z"/></svg>',
+  armes:'<svg viewBox="0 0 24 24"><path d="M12 0l2 7 6-4-3 6 7 1-6 3 5 6-7-2 1 7-5-6-4 6v-7l-7 2 5-6-6-3 7-1-3-6 6 4Z"/></svg>',
+  speciaux:'<svg viewBox="0 0 24 24"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.6 7.6 0 0 0-1.7-1L15 3.3h-4l-.3 2.6a7.6 7.6 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.6 7.6 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7.6 7.6 0 0 0 1.7-1l2.5 1 2-3.5ZM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z" transform="translate(-1 0)"/></svg>',
+  zombies:'<svg viewBox="0 0 24 24"><path d="M12 1C6.5 1 3 5 3 10c0 3 1.3 5 3 6.3V20h3v-2h2v2h2v-2h2v2h3v-3.7c1.7-1.3 3-3.3 3-6.3 0-5-3.5-9-9-9Zm-4 8.5a2.3 2.3 0 1 1 0 4.6 2.3 2.3 0 0 1 0-4.6Zm8 0a2.3 2.3 0 1 1 0 4.6 2.3 2.3 0 0 1 0-4.6ZM12 14l1.3 2.5h-2.6Z"/></svg>',
+  evenements:'<svg viewBox="0 0 24 24"><path d="M3.5 2 2 3.5l7 7-1.8 1.8 1.4 1.4L6 16.4 3 19.4 4.6 21l3-3 2.7-2.6 1.4 1.4 1.8-1.8 1.4 1.4 1.4-1.4L4.5 2.1ZM20.5 2 14 8.5l1.5 1.5L22 3.5ZM16.5 12l-1.5 1.5 3 3L15.5 19l1.5 1.5 2.5-2.5 1.5 1.5 1.5-1.5Z"/></svg>',
+  ressources:'<svg viewBox="0 0 24 24"><path d="M12 1 2 6v12l10 5 10-5V6Zm0 2.2L19.5 7 12 10.8 4.5 7ZM4 8.6l7 3.5v8.3L4 16.9Zm9 11.8v-8.3l7-3.5v8.3Z"/></svg>',
+  consommables:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M10 6h4v4h4v4h-4v4h-4v-4H6v-4h4Z" fill="#1d1a17"/></svg>',
+};
+const CATEGORIES = [
+  {id:'toutes',label:'Toutes'},{id:'humains',label:'Humains'},{id:'tireurs',label:'Tireurs'},
+  {id:'murs',label:'Murs'},{id:'armes',label:'Armes spé'},{id:'speciaux',label:'Spéciaux'},
+  {id:'zombies',label:'Zombies'},{id:'evenements',label:'Événements'},{id:'ressources',label:'Ressources'},
+  {id:'consommables',label:'Consommables'},
+];
+
+/* ================= ART (ink-style SVG illustrations) ================= */
+const INK='#241d17', SHADE='#5a4a3a', CLOTH='#efe7d6';
+const burst = (c='#f08a2c') => `
+  <g opacity=".85">${Array.from({length:22},(_,i)=>{const a=i/22*Math.PI*2,r1=10,r2=46+(i%3)*10;
+    return `<path d="M50 52 L${50+Math.cos(a-.08)*r2} ${52+Math.sin(a-.08)*r2} L${50+Math.cos(a+.08)*r2} ${52+Math.sin(a+.08)*r2}Z" fill="${c}"/>`}).join('')}
+  <circle cx="50" cy="52" r="24" fill="${c}"/></g>`;
+const ground = `<path d="M0 92q25-4 50 0t50-1v13H0Z" fill="${SHADE}" opacity=".35"/>
+  <g stroke="${SHADE}" stroke-width=".6" opacity=".6"><path d="M8 95h14M60 97h20M30 99h12"/></g>`;
+const wrap = (inner, bg='') => `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">${bg}${inner}</svg>`;
+
+const ART = {
+  traqueur: () => wrap(`
+    ${ground}
+    <path d="M30 28q4-16 18-16q12 0 14 14l3 10 12 52-12-4-6 6-8-8-10 6-6-8-10 4 8-30q-6-12-3-26Z" fill="${CLOTH}" stroke="${INK}" stroke-width="1.6"/>
+    <path d="M40 22q6-6 14-2 4 6 2 14-8 4-14 0-4-6-2-12Z" fill="${INK}"/>
+    <path d="M36 30q-4 6-2 14M60 36q4 14 6 30M46 50q-2 14 0 30M54 52l2 30" stroke="${INK}" stroke-width=".8" fill="none"/>
+    <rect x="26" y="20" width="9" height="22" rx="2" fill="${SHADE}" stroke="${INK}" stroke-width="1" transform="rotate(-15 30 30)"/>
+    <g stroke="${INK}" stroke-width="1"><path d="M27 20l-3-10M30 19l-1-11M33 19l1-10"/></g>
+    <g fill="#b3261e"><path d="M22 10l4-2 0 4ZM27 7l4-1-1 4ZM33 8l3 1-2 3Z"/></g>
+    <path d="M50 62l34 6" stroke="#6d4a26" stroke-width="3" stroke-linecap="round"/>
+    <path d="M78 54q10 14 0 28" stroke="${INK}" stroke-width="2" fill="none"/>
+    <path d="M78 54l-26 13 26 15" stroke="${INK}" stroke-width=".6" fill="none"/>
+    <path d="M84 68l8 0-3-2" stroke="#b3261e" stroke-width="1.6" fill="none"/>
+    <path d="M48 58q4 2 6 6" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>
+  `, burst()),
+  partisane: () => wrap(`
+    ${ground}
+    <path d="M32 100q0-30 6-40 6-8 12-8t12 8q6 10 6 40Z" fill="#6b6455" stroke="${INK}" stroke-width="1.5"/>
+    <circle cx="50" cy="34" r="10" fill="#d9b48a" stroke="${INK}" stroke-width="1.5"/>
+    <path d="M38 30q2-10 12-10t12 8l4 2-30 1Z" fill="#4a4338" stroke="${INK}" stroke-width="1.2"/>
+    <circle cx="50" cy="25" r="1.5" fill="#b3261e"/>
+    <path d="M40 34q-4 8-2 16" stroke="#5a3d22" stroke-width="3" fill="none"/>
+    <path d="M46 36h2M53 36h2M48 41h5" stroke="${INK}" stroke-width="1"/>
+    <path d="M22 66l56-12 2 4-12 4 2 8-6 1-2-7-38 8Z" fill="#3a2f22" stroke="${INK}" stroke-width="1"/>
+    <path d="M60 60l2 10" stroke="${INK}" stroke-width="3"/>
+    <path d="M40 64q4 6 10 2M58 58q4 0 6 4" stroke="#d9b48a" stroke-width="4" stroke-linecap="round"/>
+    <path d="M42 70v20M58 72v18" stroke="${INK}" stroke-width=".8"/>
+  `),
+  chien: () => wrap(`
+    ${ground}
+    <path d="M24 56q4-10 16-12l24-2q10 0 12 10l2 14-4 22h-5l1-18-8 4-16 0-4 14h-5l2-16q-8-2-12-8l-6 18h-5l4-20q-4-2-4-6Z" fill="#a88a62" stroke="${INK}" stroke-width="1.5"/>
+    <path d="M62 42l2-16 5 10 3-12 4 14q8 4 8 10l-6 4-10-2Z" fill="#8b6f4a" stroke="${INK}" stroke-width="1.5"/>
+    <path d="M78 52l8 2-2 4-8-1Z" fill="${INK}"/>
+    <circle cx="72" cy="44" r="1.4" fill="${INK}"/>
+    <path d="M24 54q-10-6-8-18" stroke="${INK}" stroke-width="3" fill="none"/>
+    <path d="M42 46h22v14H42Z" fill="#4a4338" stroke="${INK}" stroke-width="1.2"/>
+    <path d="M42 50h22M48 46v14" stroke="${INK}" stroke-width=".7"/>
+    <path d="M44 66q6 2 14 0" stroke="${INK}" stroke-width=".7" fill="none"/>
+  `),
+  bouclier: () => wrap(`
+    ${ground}
+    <path d="M28 100q-2-30 4-44 6-10 18-10t16 10q4 12 2 44Z" fill="#3e3c38" stroke="${INK}" stroke-width="1.5"/>
+    <path d="M36 32q0-14 14-14t14 14v8H36Z" fill="#2c2b28" stroke="${INK}" stroke-width="1.5"/>
+    <path d="M38 32h24v5H38Z" fill="#7a7a74" stroke="${INK}" stroke-width="1"/>
+    <path d="M56 40q14-4 26 0l-2 52q-12 4-24 0Z" fill="#9c9c94" stroke="${INK}" stroke-width="1.8"/>
+    <path d="M58 46q11-3 22 0v8q-11-3-22 0Z" fill="#c9c9c0" stroke="${INK}" stroke-width=".8"/>
+    <path d="M60 60l18 0M60 70h18M60 80h18" stroke="${INK}" stroke-width=".5" opacity=".6"/>
+    <path d="M30 62q-6 10-2 22" stroke="${INK}" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M24 82l-4 10" stroke="${INK}" stroke-width="2.5"/>
+  `),
+  tourelle: () => wrap(`
+    ${ground}
+    <path d="M50 64l-24 30M50 64l24 30M50 64v28" stroke="${INK}" stroke-width="3.5" stroke-linecap="round"/>
+    <rect x="44" y="56" width="12" height="10" fill="#3a3732" stroke="${INK}" stroke-width="1.2"/>
+    <rect x="28" y="34" width="34" height="24" rx="2" fill="#5b5850" stroke="${INK}" stroke-width="1.6"/>
+    <rect x="32" y="38" width="12" height="7" fill="#2c2a26"/>
+    <path d="M62 40l30-6v5l-30 6Z" fill="#46433d" stroke="${INK}" stroke-width="1.4"/>
+    <rect x="86" y="32" width="6" height="9" fill="#2c2a26" stroke="${INK}" stroke-width="1"/>
+    <circle cx="36" cy="52" r="1.5" fill="${INK}"/><circle cx="54" cy="52" r="1.5" fill="${INK}"/>
+    <path d="M30 34l4-6h20l4 6" fill="#46433d" stroke="${INK}" stroke-width="1.2"/>
+  `),
+  rodeur: () => wrap(`
+    ${ground}
+    <path d="M38 50q4-8 14-8 10 2 12 12l4 18-6 2-4-14-2 18 8 20h-7l-8-16-6 16h-7l6-22q-6-8-4-26Z" fill="#8a3a2e" stroke="${INK}" stroke-width="1.5"/>
+    <circle cx="56" cy="32" r="10" fill="#b7aa8e" stroke="${INK}" stroke-width="1.5"/>
+    <path d="M51 30h3M58 29h3" stroke="${INK}" stroke-width="1.6"/>
+    <path d="M53 37q4 3 7 0l-1 3h-5Z" fill="${INK}"/>
+    <path d="M40 52l-14 6-2 4M62 54l18 4 4-2" stroke="#b7aa8e" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M44 60l4 4M54 50l-2 8M42 70l6-2" stroke="${INK}" stroke-width=".8"/>
+    <g fill="${SHADE}" opacity=".6"><circle cx="20" cy="84" r="3"/><circle cx="80" cy="80" r="2"/><circle cx="74" cy="90" r="1.5"/></g>
+  `),
+  colosse: () => wrap(`
+    ${ground}
+    <path d="M22 100q-4-34 6-48 8-10 22-10t22 10q10 14 6 48Z" fill="#6f6658" stroke="${INK}" stroke-width="1.8"/>
+    <circle cx="50" cy="32" r="12" fill="#9a8f7a" stroke="${INK}" stroke-width="1.6"/>
+    <path d="M43 30h4M53 30h4" stroke="${INK}" stroke-width="2"/>
+    <path d="M44 38q6 4 12 0v4h-12Z" fill="${INK}"/>
+    <path d="M24 56q-8 14-4 30M76 56q8 14 4 30" stroke="#8f8574" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <path d="M24 56q-8 14-4 30M76 56q8 14 4 30" stroke="${INK}" stroke-width="1.4" fill="none"/>
+    <path d="M30 52l40 28M70 52l-40 28" stroke="#3a3228" stroke-width="3"/>
+    <path d="M40 64l2 6M56 70l4-4M46 80l6 2" stroke="#7a2a1a" stroke-width="1.5"/>
+  `),
+  sacs: () => wrap(`
+    ${ground}
+    ${[0,1,2,3].map(r=>Array.from({length:5-(r%2)},(_,i)=>{
+      const x=10+i*17+(r%2)*8.5, y=78-r*12;
+      return `<rect x="${x}" y="${y}" width="16" height="11" rx="5" fill="#b9a57e" stroke="${INK}" stroke-width="1.2"/>
+              <path d="M${x+3} ${y+5}h10" stroke="${SHADE}" stroke-width=".6"/>`;}).join('')).join('')}
+  `),
+  jerrican: () => wrap(`
+    ${ground}
+    <path d="M30 34h40q4 0 4 4v52q0 4-4 4H30q-4 0-4-4V38q0-4 4-4Z" fill="#b3261e" stroke="${INK}" stroke-width="1.8"/>
+    <path d="M34 26h12l4 8H34Z" fill="#8c1c15" stroke="${INK}" stroke-width="1.4"/>
+    <rect x="56" y="26" width="10" height="8" fill="#5e120c" stroke="${INK}" stroke-width="1.2"/>
+    <path d="M34 42l32 44M66 42L34 86" stroke="#7d1711" stroke-width="3"/>
+    <path d="M32 40h36v48H32Z" fill="none" stroke="#7d1711" stroke-width="1.5"/>
+    <path d="M30 38q2 24 0 50" stroke="#e05a4c" stroke-width="2" opacity=".6"/>
+  `),
+  medikit: () => wrap(`
+    ${ground}
+    <rect x="22" y="40" width="56" height="44" rx="4" fill="#e9e2d0" stroke="${INK}" stroke-width="1.8"/>
+    <path d="M40 40v-8h20v8" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    <path d="M45 50h10v8h8v10h-8v8H45v-8h-8V58h8Z" fill="#b3261e" stroke="${INK}" stroke-width="1.2"/>
+  `),
+  fusee: () => wrap(`
+    ${ground}
+    <path d="M50 18q-18 20-6 74" stroke="#e0402f" stroke-width="2" stroke-dasharray="3 3" fill="none"/>
+    <circle cx="50" cy="18" r="9" fill="#ff7a2a"/>
+    <circle cx="50" cy="18" r="4" fill="#fff2b8"/>
+    <rect x="40" y="70" width="10" height="24" rx="2" fill="#b3261e" stroke="${INK}" stroke-width="1.4" transform="rotate(-12 45 82)"/>
+  `, burst('#f4b03a')),
+  barbeles: () => wrap(`
+    ${ground}
+    <path d="M14 92l10-40M86 92l-10-40" stroke="#5a3d22" stroke-width="4"/>
+    ${[0,1,2].map(i=>`<path d="M10 ${58+i*10}q10-6 20 0t20 0 20 0 20 0" stroke="${INK}" stroke-width="1.3" fill="none"/>`).join('')}
+    ${Array.from({length:12},(_,i)=>`<path d="M${14+i*6.5} ${58+(i%3)*10}l-2-3m2 3 2-3m-2 3-2 3m2-3 2 3" stroke="${INK}" stroke-width=".9"/>`).join('')}
+  `),
+  pillard: () => wrap(`
+    ${ground}
+    <path d="M34 100q0-30 4-42 4-8 12-8t12 8q4 12 4 42Z" fill="#584b3b" stroke="${INK}" stroke-width="1.5"/>
+    <circle cx="50" cy="36" r="10" fill="#d0a982" stroke="${INK}" stroke-width="1.5"/>
+    <path d="M40 38h20v6q-10 6-20 0Z" fill="#7a2a1a" stroke="${INK}" stroke-width="1"/>
+    <path d="M40 32q0-10 10-10t10 10Z" fill="#2c2620"/>
+    <path d="M62 56l14-24" stroke="#5a3d22" stroke-width="3"/>
+    <path d="M70 30l10 4-4 6-8-4Z" fill="#8f8f88" stroke="${INK}" stroke-width="1"/>
+    <path d="M62 58q4 0 6-4" stroke="#d0a982" stroke-width="4" stroke-linecap="round"/>
+  `),
+};
+
+/* ================= DATA ================= */
+const CARDS = [
+  {id:1, name:'Le Traqueur',   cats:['humains','tireurs'], cost:4, atk:3, hp:5, art:'traqueur',  text:'Inflige +2 dégâts aux zombies isolés.'},
+  {id:2, name:'La Partisane',  cats:['humains','tireurs'], cost:3, atk:2, hp:4, art:'partisane', text:'Quand elle entre en jeu, piochez une carte Munitions.'},
+  {id:3, name:'Molosse',       cats:['speciaux'],          cost:2, atk:3, hp:3, art:'chien',     text:'Flair : révèle le prochain zombie de la horde.'},
+  {id:4, name:'Le Rempart',    cats:['humains'],           cost:5, atk:4, hp:6, art:'bouclier',  text:'Protection : les alliés adjacents subissent 1 dégât de moins.'},
+  {id:5, name:'Tourelle',      cats:['armes'],             cost:4, atk:5, hp:5, art:'tourelle',  text:'Tire automatiquement sur le premier zombie de la ligne à chaque fin de tour.'},
+  {id:6, name:'Rôdeur',        cats:['zombies'],           cost:3, atk:4, hp:3, art:'rodeur',    text:'Rapide : attaque le tour où il apparaît.'},
+  {id:7, name:'Le Colosse',    cats:['zombies'],           cost:6, atk:6, hp:8, art:'colosse',   text:'Écrase les Murs : inflige le double de dégâts aux barricades.'},
+  {id:8, name:'Sacs de sable', cats:['murs'],              cost:2, atk:0, hp:6, art:'sacs',      text:'Bloque une ligne. Les Tireurs derrière gagnent +1 PV.'},
+  {id:9, name:'Jerrican',      cats:['ressources'],        cost:1, atk:0, hp:0, art:'jerrican',  text:'Gagnez 2 points de carburant. Peut être sacrifié pour enflammer une ligne.'},
+  {id:10,name:'Trousse de soin',cats:['consommables'],     cost:2, atk:0, hp:0, art:'medikit',   text:'Rend 4 PV à un humain.'},
+  {id:11,name:'Fusée éclairante',cats:['evenements'],      cost:1, atk:0, hp:0, art:'fusee',     text:'Tous les zombies sont révélés jusqu\'à la fin du tour.'},
+  {id:12,name:'Barbelés',      cats:['murs'],              cost:3, atk:1, hp:4, art:'barbeles',  text:'Les zombies qui attaquent ce mur subissent 1 dégât.'},
+  {id:13,name:'Pillard',       cats:['humains'],           cost:2, atk:2, hp:2, art:'pillard',   text:'Quand il élimine un zombie, gagnez 1 ressource.'},
+];
+
+/* ================= STATE / RENDER ================= */
+const state = { cat:'toutes', q:'', selected:1 };
+const $ = s => document.querySelector(s);
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+
+function renderFilters(){
+  $('#filters').innerHTML = CATEGORIES.map(c=>{
+    const n = c.id==='toutes' ? CARDS.length : CARDS.filter(k=>k.cats.includes(c.id)).length;
+    return `<button class="filter ${state.cat===c.id?'active':''}" data-cat="${c.id}">
+      ${ICONS[c.id]}<span>${c.label}</span><span class="count">${n}</span></button>`;
+  }).join('');
+}
+
+const corners = '<i class="corner c1"></i><i class="corner c2"></i><i class="corner c3"></i><i class="corner c4"></i>';
+
+function cardMini(c){
+  return `<div class="card mini ${state.selected===c.id?'selected':''}" data-id="${c.id}" role="button" tabindex="0" aria-label="${c.name}">
+    ${corners}
+    <div class="face">
+      <div class="art">${ART[c.art]()}</div>
+      <div class="nameplate"></div>
+    </div>
+    <span class="gem cost">${c.cost}</span>
+    <span class="gem atk">${c.atk}</span>
+    <span class="gem hp">${c.hp}</span>
+  </div>`;
+}
+
+function renderGrid(){
+  const q = norm(state.q.trim());
+  const list = CARDS.filter(c =>
+    (state.cat==='toutes' || c.cats.includes(state.cat)) &&
+    (!q || norm(c.name+' '+c.text).includes(q)));
+  $('#grid').innerHTML = list.length ? list.map(cardMini).join('') : '<div class="empty">Aucune carte trouvée</div>';
+}
+
+function renderDetail(){
+  const c = CARDS.find(k=>k.id===state.selected);
+  if(!c){ $('#detail').innerHTML=''; return; }
+  const labels = c.cats.map(id=>CATEGORIES.find(k=>k.id===id).label);
+  $('#detail').innerHTML = `<article class="card detail">
+    ${corners}
+    <div class="face">
+      <div class="art">${ART[c.art]()}</div>
+      <h2 class="title">${c.name}</h2>
+      <div class="text">${c.text}<div class="tags">${labels.map(l=>`<span class="tag">${l}</span>`).join('')}</div></div>
+    </div>
+    <span class="gem cost">${c.cost}</span>
+    <span class="gem atk">${c.atk}</span>
+    <span class="gem hp">${c.hp}</span>
+  </article>`;
+}
+
+function render(){ renderFilters(); renderGrid(); renderDetail(); }
+
+$('#filters').addEventListener('click', e=>{
+  const b = e.target.closest('.filter'); if(!b) return;
+  state.cat = b.dataset.cat; renderFilters(); renderGrid();
+});
+$('#grid').addEventListener('click', e=>{
+  const el = e.target.closest('.card'); if(!el) return;
+  state.selected = +el.dataset.id; renderGrid(); renderDetail();
+  if (matchMedia('(max-width:900px)').matches) $('#detail').scrollIntoView({behavior:'smooth'});
+});
+$('#grid').addEventListener('keydown', e=>{
+  if((e.key==='Enter'||e.key===' ') && e.target.classList.contains('card')){ e.preventDefault(); e.target.click(); }
+});
+$('#q').addEventListener('input', e=>{ state.q = e.target.value; renderGrid(); });
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));
+}));
+
+render();
+</script>
+</body>
+</html>
