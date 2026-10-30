@@ -6,8 +6,9 @@
 
 const $ = s => document.querySelector(s);
 const stage = $('#stage');
-// Grille de la cour : 9 × 9 cases, calée sur assets/plateau/cour.webp (grille de 852 × 870 px à partir de x 198, y 161).
-const COLS = 9, ROWS = 9, CW = 495.8 / COLS, CH = 506.3 / ROWS;
+// Grille de la cour : 11 × 9 cases sur la zone jouable de la cour (602 × 506 px).
+// L'image de la cour est étirée sur toute la zone centrale ; sa grille peinte (9 × 9) ne correspond pas aux cases.
+const COLS = 11, ROWS = 9, CW = 602.2 / COLS, CH = 506.3 / ROWS;
 
 /* ================= ICÔNES (rendu de secours) ================= */
 // viewBox 0 0 48 48, trait = currentColor
@@ -101,20 +102,20 @@ const DEMO = {
   // Positions en cases (colonne, ligne) depuis le coin haut-gauche de la grille (9 × 9) ; décimales permises.
   // Les décors (sacs, caisses, sang…) sont déjà peints dans l'image de la cour : la démo n'en ajoute pas.
   unites: [
-    { type:'survivant', x:2.7, y:1.7, pv:1,  dir:0 },
-    { type:'survivant', x:2.6, y:4.6, pv:1,  dir:-6 },
-    { type:'survivant', x:4.2, y:7.2, pv:.8, dir:-4 },
-    { type:'zombie',    x:4.7, y:1.0, pv:.7, dir:120 },
-    { type:'zombie',    x:6.0, y:1.8, pv:1,  dir:150 },
-    { type:'zombie',    x:6.8, y:2.6, pv:.6, dir:170 },
-    { type:'zombie',    x:7.6, y:5.2, pv:.5, dir:190 },
-    { type:'zombie',    x:6.9, y:6.6, pv:.7, dir:200 },
-    { type:'zombie',    x:1.7, y:6.9, pv:.8, dir:-60 },
+    { type:'survivant', x:3.3, y:1.7, pv:1,  dir:0 },
+    { type:'survivant', x:3.2, y:4.6, pv:1,  dir:-6 },
+    { type:'survivant', x:5.1, y:7.2, pv:.8, dir:-4 },
+    { type:'zombie',    x:5.7, y:1.0, pv:.7, dir:120 },
+    { type:'zombie',    x:7.3, y:1.8, pv:1,  dir:150 },
+    { type:'zombie',    x:8.3, y:2.6, pv:.6, dir:170 },
+    { type:'zombie',    x:9.3, y:5.2, pv:.5, dir:190 },
+    { type:'zombie',    x:8.4, y:6.6, pv:.7, dir:200 },
+    { type:'zombie',    x:2.1, y:6.9, pv:.8, dir:-60 },
   ],
   obstacles: [],
   taches: [],
   // Lampadaires peints dans l'image de la cour (halos visibles la nuit)
-  lampes: [ {x:-1.68,y:.49},{x:10.64,y:.48},{x:-1.31,y:10.12},{x:10.27,y:10.13} ],
+  lampes: [ {x:-2.05,y:.49},{x:13.0,y:.48},{x:-1.6,y:10.12},{x:12.55,y:10.13} ],
 };
 const clone = o => JSON.parse(JSON.stringify(o));
 let S = clone(DEMO);                        // état affiché
@@ -333,7 +334,7 @@ const TESTS = [
   ['Plus aucune carte', () => setData({ deck:0, reserve:0, main:[], disponibles: DEMO.disponibles.map(c => ({ ...c, nb:0 })) })],
   ['Abri presque détruit', () => setData({ abri:{ pv:18, max:200 } })],
   ['Grosse horde', () => setData({ zombiesDehors:42, vagues:{ faites:0, total:5 },
-    unites: [...DEMO.unites, ...Array.from({ length:10 }, (_, i) => ({ type:'zombie', x:.6 + (i * 37 % 78) / 10, y:.6 + (i * 53 % 78) / 10, pv:1, dir:i * 40 }))] })],
+    unites: [...DEMO.unites, ...Array.from({ length:10 }, (_, i) => ({ type:'zombie', x:.6 + (i * 37 % 98) / 10, y:.6 + (i * 53 % 78) / 10, pv:1, dir:i * 40 }))] })],
   ['Visuels manquants on/off', () => { ASSETS.forceMissing = !ASSETS.forceMissing; applyAssets(); }],
 ];
 for (const [label, run] of TESTS){

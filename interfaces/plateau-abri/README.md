@@ -1,6 +1,6 @@
 # Plateau abri
 
-Écran de jeu principal : la cour de l'abri vue de dessus (image `assets/plateau/cour.webp`, grille de 9 × 9 cases) avec les survivants, les zombies
+Écran de jeu principal : la cour de l'abri vue de dessus (image `assets/plateau/cour.webp`, grille de 11 × 9 cases, image étirée) avec les survivants, les zombies
 et les obstacles. Autour, on trouve :
 - le jour en cours et sa progression ;
 - le deck, la réserve, la défausse et la liste des cartes disponibles ;
@@ -53,7 +53,7 @@ PlateauAbriUI.setData({
   abri: { pv: 190, max: 200 },
   zombiesDehors: 7, vagues: { faites: 2, total: 3 },
   vitesse: 1,                   // 1 | 2 | 4
-  // positions en cases (grille 9 × 9) depuis le coin haut-gauche, décimales permises
+  // positions en cases (grille 11 × 9) depuis le coin haut-gauche, décimales permises
   unites: [ { type: 'survivant' | 'zombie', x: 3, y: 1.5, pv: 0.8 /* 0 à 1 */, dir: 0 /* degrés, 0 = vers la droite */ } ],
   obstacles: [ { type: 'bloc' | 'caisse' | 'epave', x: 4, y: 1.3, w: 0.6, h: 0.6 } ],
   taches: [ { x: 5, y: 1, s: 1.2 } ],          // taches de sang

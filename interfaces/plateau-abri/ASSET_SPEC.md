@@ -26,8 +26,9 @@ Règles communes :
 ## B. Plateau (cour de l'abri, vue de dessus)
 
 > **Décision du propriétaire** : la cour est l'image fournie `assets/plateau/cour.webp` (1245 × 1263, fond transparent,
-> grille de 9 × 9 cases). Elle sert aux 3 ambiances : le code l'assombrit la nuit et la teinte en rouge pour la nuit rouge.
-> Les specs ci-dessous (10 × 8 cases) ne s'appliquent plus.
+> grille peinte de 9 × 9). Elle est **étirée** sur toute la zone centrale (880 × 735) et le jeu utilise une grille de
+> **11 × 9 cases** (choix du propriétaire, même si les lignes peintes ne correspondent pas aux cases). Elle sert aux 3 ambiances : le code l'assombrit la nuit et la teinte en rouge pour la nuit rouge.
+> Les specs ci-dessous (10 × 8 cases) ne s'appliquent plus. Pour une cour dont la grille peinte correspond aux cases, il faudra une nouvelle image 11 × 9.
 
 Zone affichée : 880 × 735 à l'écran → fichier **1760 × 1470**. Le **sol jouable** occupe exactement le rectangle
 x = 84, y = 132, 1600 × 1280 px du fichier : **10 × 8 dalles de 160 px**, alignées sur ce rectangle.
