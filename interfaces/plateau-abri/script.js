@@ -6,7 +6,8 @@
 
 const $ = s => document.querySelector(s);
 const stage = $('#stage');
-const CELL = 80, COLS = 10, ROWS = 8;
+// Grille de la cour : 9 × 9 cases, calée sur assets/plateau/cour.webp (grille de 852 × 870 px à partir de x 198, y 161).
+const COLS = 9, ROWS = 9, CW = 495.8 / COLS, CH = 506.3 / ROWS;
 
 /* ================= ICÔNES (rendu de secours) ================= */
 // viewBox 0 0 48 48, trait = currentColor
@@ -97,29 +98,23 @@ const DEMO = {
   abri: { pv:190, max:200 },
   zombiesDehors: 7, vagues: { faites:2, total:3 },
   vitesse: 1,
-  // Positions en cases (colonne, ligne) depuis le coin haut-gauche du sol (10 × 8 cases) ; décimales permises.
+  // Positions en cases (colonne, ligne) depuis le coin haut-gauche de la grille (9 × 9) ; décimales permises.
+  // Les décors (sacs, caisses, sang…) sont déjà peints dans l'image de la cour : la démo n'en ajoute pas.
   unites: [
-    { type:'survivant', x:3.0, y:1.5, pv:1,  dir:0 },
-    { type:'survivant', x:2.95,y:4.1, pv:1,  dir:-6 },
-    { type:'survivant', x:4.7, y:6.4, pv:.8, dir:-4 },
-    { type:'zombie',    x:5.2, y:0.9, pv:.7, dir:120 },
-    { type:'zombie',    x:6.7, y:1.6, pv:1,  dir:150 },
-    { type:'zombie',    x:7.6, y:2.3, pv:.6, dir:170 },
-    { type:'zombie',    x:8.5, y:4.6, pv:.5, dir:190 },
-    { type:'zombie',    x:7.7, y:5.9, pv:.7, dir:200 },
-    { type:'zombie',    x:1.9, y:6.1, pv:.8, dir:-60 },
+    { type:'survivant', x:2.7, y:1.7, pv:1,  dir:0 },
+    { type:'survivant', x:2.6, y:4.6, pv:1,  dir:-6 },
+    { type:'survivant', x:4.2, y:7.2, pv:.8, dir:-4 },
+    { type:'zombie',    x:4.7, y:1.0, pv:.7, dir:120 },
+    { type:'zombie',    x:6.0, y:1.8, pv:1,  dir:150 },
+    { type:'zombie',    x:6.8, y:2.6, pv:.6, dir:170 },
+    { type:'zombie',    x:7.6, y:5.2, pv:.5, dir:190 },
+    { type:'zombie',    x:6.9, y:6.6, pv:.7, dir:200 },
+    { type:'zombie',    x:1.7, y:6.9, pv:.8, dir:-60 },
   ],
-  obstacles: [
-    { type:'bloc',   x:4.0, y:1.3, w:.6, h:.6 },
-    { type:'bloc',   x:1.95,y:3.5, w:.6, h:.6 }, { type:'bloc', x:1.95, y:4.1, w:.6, h:.6 },
-    { type:'bloc',   x:6.8, y:2.85,w:.6, h:.6 }, { type:'bloc', x:6.8,  y:3.45,w:.6, h:.6 },
-    { type:'bloc',   x:2.95,y:6.9, w:.6, h:.6 }, { type:'bloc', x:2.95, y:7.5, w:.6, h:.6 },
-    { type:'bloc',   x:6.4, y:6.6, w:.6, h:.6 }, { type:'bloc', x:6.4,  y:7.2, w:.6, h:.6 },
-    { type:'caisse', x:4.1, y:3.85,w:1.9, h:1.3 },
-    { type:'epave',  x:8.0, y:0.4, w:2.0, h:1.9 },
-  ],
-  taches: [ {x:5.2,y:1.0,s:1.2}, {x:3.9,y:3.2,s:1.4}, {x:8.4,y:4.5,s:1.3}, {x:7.7,y:6.0,s:1.3}, {x:0.2,y:5.0,s:1.1}, {x:2.0,y:6.2,s:1}, {x:5.3,y:3.0,s:.8} ],
-  lampes: [ {x:0,y:1.5},{x:0,y:4.3},{x:0,y:6.4},{x:10,y:1.4},{x:10,y:3.6},{x:10,y:6.3},{x:1.2,y:-.4},{x:9,y:-.4} ],
+  obstacles: [],
+  taches: [],
+  // Lampadaires peints dans l'image de la cour (halos visibles la nuit)
+  lampes: [ {x:-1.68,y:.49},{x:10.64,y:.48},{x:-1.31,y:10.12},{x:10.27,y:10.13} ],
 };
 const clone = o => JSON.parse(JSON.stringify(o));
 let S = clone(DEMO);                        // état affiché
@@ -133,7 +128,7 @@ function fillIcons(root = document){
   root.querySelectorAll('.ico[data-icon]').forEach(el => { el.innerHTML = icon(UI_ICONS, el.dataset.icon); });
 }
 const pct = v => `${Math.max(0, Math.min(1, v)) * 100}%`;
-const at = (el, x, y) => { el.style.left = `${x * CELL}px`; el.style.top = `${y * CELL}px`; };
+const at = (el, x, y) => { el.style.left = `${x * CW}px`; el.style.top = `${y * CH}px`; };
 
 function renderHud(){
   stage.dataset.phase = S.phase;
@@ -166,7 +161,7 @@ function renderMain(){
   $('#main').innerHTML = S.main.map((c, i) => {
     const sel = selection && selection.source === 'main' && selection.index === i;
     return `<button class="carte" data-i="${i}" aria-pressed="${sel}" aria-label="${c.nom}, coût ${c.cout}" style="--r:${rot(i).toFixed(1)}deg">
-      <span class="cadre" data-asset="cadre-carte"></span>
+      <span class="cadre" data-asset="carte-modele"></span>
       <span class="art" data-asset="carte-${c.id}"><span class="fx">${cardArt(c.id)}</span></span>
       <span class="nom">${c.nom}</span><span class="cout">${c.cout}</span></button>`;
   }).join('') || '';
@@ -176,15 +171,15 @@ function renderPlateau(){
   $('#decals').innerHTML = '';
   for (const [k, t] of S.taches.entries()){
     const d = document.createElement('div'); d.className = 'decal'; d.dataset.asset = 'decal-sang';
-    const s = (t.s || 1) * CELL; Object.assign(d.style, { width:`${s}px`, height:`${s}px`, marginLeft:`${-s/2}px`, marginTop:`${-s/2}px` });
+    const s = (t.s || 1) * CW; Object.assign(d.style, { width:`${s}px`, height:`${s}px`, marginLeft:`${-s/2}px`, marginTop:`${-s/2}px` });
     d.innerHTML = `<span class="fx">${SANG_SVG(k * 31 + 7)}</span>`; at(d, t.x, t.y); $('#decals').append(d);
   }
-  $('#lampes').innerHTML = S.lampes.map(l => `<i style="left:${l.x * CELL}px;top:${l.y * CELL}px"></i>`).join('');
+  $('#lampes').innerHTML = S.lampes.map(l => `<i style="left:${l.x * CW}px;top:${l.y * CH}px"></i>`).join('');
   const pieces = $('#pieces'); pieces.innerHTML = '';
   for (const o of S.obstacles){
     const el = document.createElement('div');
     el.className = `piece obstacle ${o.type}`; el.dataset.asset = `obstacle-${o.type}`;
-    at(el, o.x, o.y); el.style.width = `${o.w * CELL}px`; el.style.height = `${o.h * CELL}px`;
+    at(el, o.x, o.y); el.style.width = `${o.w * CW}px`; el.style.height = `${o.h * CH}px`;
     if (o.type === 'epave') el.innerHTML = `<span class="fx">${EPAVE_SVG}</span>`;
     if (o.type === 'pose') { el.classList.add('pose-carte'); el.innerHTML = `<i class="ico">${icon(LIST_ICONS, o.carte)}</i>`; }
     pieces.append(el);
@@ -338,7 +333,7 @@ const TESTS = [
   ['Plus aucune carte', () => setData({ deck:0, reserve:0, main:[], disponibles: DEMO.disponibles.map(c => ({ ...c, nb:0 })) })],
   ['Abri presque détruit', () => setData({ abri:{ pv:18, max:200 } })],
   ['Grosse horde', () => setData({ zombiesDehors:42, vagues:{ faites:0, total:5 },
-    unites: [...DEMO.unites, ...Array.from({ length:10 }, (_, i) => ({ type:'zombie', x:1 + (i * 37 % 80) / 10, y:.6 + (i * 53 % 66) / 10, pv:1, dir:i * 40 }))] })],
+    unites: [...DEMO.unites, ...Array.from({ length:10 }, (_, i) => ({ type:'zombie', x:.6 + (i * 37 % 78) / 10, y:.6 + (i * 53 % 78) / 10, pv:1, dir:i * 40 }))] })],
   ['Visuels manquants on/off', () => { ASSETS.forceMissing = !ASSETS.forceMissing; applyAssets(); }],
 ];
 for (const [label, run] of TESTS){
