@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<rect width="1280" height="720" fill="#2a231c"/>
+<path d="M0 0L1280 720M1280 0L0 720" stroke="#c99a3b" stroke-opacity=".25" stroke-width="2"/>
+<rect x="4" y="4" width="1272" height="712" fill="none" stroke="#c99a3b" stroke-width="4" stroke-dasharray="16 10"/>
+<g font-family="sans-serif" text-anchor="middle" fill="#e6dcc6">
+<text x="640.0" y="309.0" font-size="51" font-weight="bold">PLACEHOLDER</text>
+<text x="640.0" y="380.4" font-size="40.800000000000004">reference</text>
+<text x="640.0" y="441.6" font-size="35.699999999999996" fill="#9a8f7a">1280 × 720</text>
+</g></svg>

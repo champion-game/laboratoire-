@@ -3,125 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Laboratoire — Menus</title>
+<title>Laboratoire — Interfaces</title>
+<!-- Menu : une simple liste de liens vers interfaces/<nom>/index.html.
+     Il ne charge rien des interfaces : si un dossier manque ou est cassé, seul son lien mène à une erreur.
+     Ajouter une interface = ajouter un <li> ci-dessous. -->
 <style>
 :root{--bg:#141210;--panel:#1e1a16;--line:#3a3128;--text:#e6dcc6;--muted:#9a8f7a;--gold:#c99a3b}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%}
-body{background:var(--bg);color:var(--text);font-family:system-ui,sans-serif}
-header{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
-header h1{margin:0;font-size:18px;letter-spacing:.04em}
-header h1 span{color:var(--gold)}
-#back{display:none;border:1px solid var(--line);background:none;color:var(--text);padding:6px 12px;border-radius:6px;font:inherit;cursor:pointer}
-#back:hover{border-color:var(--gold)}
-body.viewing #back{display:inline-block}
-main{padding:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;max-width:1100px;margin:0 auto}
-.menu{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;transition:border-color .15s,transform .15s}
-.menu:hover,.menu:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
-.menu h2{margin:0 0 6px;font-size:17px}
-.menu p{margin:0;color:var(--muted);font-size:14px}
-.menu code{display:block;margin-top:10px;color:var(--muted);font-size:12px}
-#frame{display:none;position:fixed;left:0;right:0;bottom:0;width:100%;border:0;background:#000}
-body.viewing main{display:none}
-body.viewing #frame{display:block}
-.empty{color:var(--muted);text-align:center}
-.icon-btn{border:1px solid var(--line);background:none;color:var(--text);padding:6px 10px;border-radius:6px;font:inherit;cursor:pointer;line-height:1}
-.icon-btn:hover{border-color:var(--gold)}
-#fs{margin-left:auto}
-#fs-exit{display:none;position:fixed;bottom:12px;right:12px;z-index:10;background:rgba(20,18,16,.75);opacity:.6}
-#fs-exit:hover,#fs-exit:focus-visible{opacity:1}
-body.full header{display:none}
-body.full #fs-exit{display:block}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif}
+header{padding:16px;border-bottom:1px solid var(--line);background:var(--panel)}
+h1{margin:0;font-size:18px;letter-spacing:.04em}
+h1 span{color:var(--gold)}
+ul{list-style:none;margin:0 auto;padding:16px;max-width:1100px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+a{display:block;height:100%;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;transition:border-color .15s,transform .15s}
+a:hover,a:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+strong{display:block;margin-bottom:6px;font-size:17px}
+small{display:block;color:var(--muted);font-size:14px}
+code{display:block;margin-top:10px;color:var(--muted);font-size:12px}
 </style>
 </head>
 <body>
-<header>
-  <button id="back" type="button">‹ Menus</button>
-  <h1 id="title"><span>Laboratoire</span> — Menus</h1>
-  <button id="fs" class="icon-btn" type="button" title="Plein écran" aria-label="Plein écran">⛶</button>
-</header>
-<button id="fs-exit" class="icon-btn" type="button" title="Quitter le plein écran" aria-label="Quitter le plein écran">✕</button>
-<main><div class="grid" id="grid"></div></main>
-<iframe id="frame" title="Menu"></iframe>
-
-<script src="menus/menus.js"></script>
-<script>
-// Le lanceur ne connaît que menus/menus.js.
-// Chaque menu s'ouvre dans une iframe : son CSS et son JS restent isolés.
-const menus = window.MENUS || [];
-const grid = document.getElementById('grid');
-const frame = document.getElementById('frame');
-const title = document.getElementById('title');
-const header = document.querySelector('header');
-
-if (!menus.length) grid.innerHTML = '<p class="empty">Aucun menu dans menus/menus.js</p>';
-for (const m of menus) {
-  const a = document.createElement('a');
-  a.className = 'menu';
-  a.href = '#/' + m.id;
-  a.innerHTML = '<h2></h2><p></p><code></code>';
-  a.querySelector('h2').textContent = m.titre;
-  a.querySelector('p').textContent = m.description || '';
-  a.querySelector('code').textContent = 'menus/' + m.id + '/';
-  grid.append(a);
-}
-
-function route() {
-  const id = location.hash.replace(/^#\/?/, '');
-  const m = menus.find(x => x.id === id);
-  if (m) {
-    const src = 'menus/' + m.id + '/index.html';
-    if (frame.getAttribute('src') !== src) frame.src = src;
-    title.innerHTML = '<span></span>';
-    title.firstChild.textContent = m.titre;
-    document.title = m.titre + ' — Laboratoire';
-    document.body.classList.add('viewing');
-    layout();
-  } else {
-    frame.removeAttribute('src');
-    title.innerHTML = '<span>Laboratoire</span> — Menus';
-    document.title = 'Laboratoire — Menus';
-    document.body.classList.remove('viewing');
-  }
-}
-// Place l'iframe sous l'en-tête (ou sur tout l'écran en plein écran).
-function layout() {
-  const h = document.body.classList.contains('full') ? 0 : header.offsetHeight;
-  frame.style.top = h + 'px';
-  frame.style.height = 'calc(100% - ' + h + 'px)';
-}
-
-// Plein écran : masque l'en-tête et utilise le vrai plein écran du navigateur
-// quand il existe (pas sur iPhone, où seul l'en-tête est masqué).
-function setFull(on) {
-  document.body.classList.toggle('full', on);
-  layout();
-  const el = document.documentElement;
-  const req = el.requestFullscreen || el.webkitRequestFullscreen;
-  const exit = document.exitFullscreen || document.webkitExitFullscreen;
-  const cur = document.fullscreenElement || document.webkitFullscreenElement;
-  try {
-    if (on && !cur && req) { const p = req.call(el); if (p && p.catch) p.catch(() => {}); }
-    if (!on && cur && exit) { const p = exit.call(document); if (p && p.catch) p.catch(() => {}); }
-  } catch (e) {}
-}
-document.getElementById('fs').onclick = () => setFull(true);
-document.getElementById('fs-exit').onclick = () => setFull(false);
-addEventListener('keydown', e => { if (e.key === 'Escape' && document.body.classList.contains('full')) setFull(false); });
-for (const ev of ['fullscreenchange', 'webkitfullscreenchange']) {
-  document.addEventListener(ev, () => {
-    if (!(document.fullscreenElement || document.webkitFullscreenElement)) {
-      document.body.classList.remove('full');
-      layout();
-    }
-  });
-}
-addEventListener('resize', layout);
-
-document.getElementById('back').onclick = () => { location.hash = ''; };
-addEventListener('hashchange', route);
-route();
-</script>
+<header><h1><span>Laboratoire</span> — Interfaces</h1></header>
+<ul>
+  <li><a href="interfaces/collection/index.html"><strong>Collection</strong><small>Grille de cartes Barricard avec filtres</small><code>interfaces/collection/</code></a></li>
+  <li><a href="interfaces/classeur/index.html"><strong>Classeur</strong><small>Vue classeur avec pages qui se tournent</small><code>interfaces/classeur/</code></a></li>
+  <li><a href="interfaces/terres-mortes/index.html"><strong>Terres mortes</strong><small>Collection Terres mortes</small><code>interfaces/terres-mortes/</code></a></li>
+</ul>
 </body>
 </html>

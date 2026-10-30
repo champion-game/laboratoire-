@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barricard — Classeur</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <svg class="sky" viewBox="0 0 1536 110" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs><radialGradient id="sun"><stop offset="0" stop-color="#ff4a2a"/><stop offset=".6" stop-color="#e2321c"/><stop offset="1" stop-color="#e2321c" stop-opacity="0"/></radialGradient></defs>
+    <circle cx="690" cy="34" r="55" fill="url(#sun)" opacity=".9"/>
+    <g fill="#16110d">
+      <path d="M0 110V60l8-10 8 10v-6l8-10 8 10v-4l8-12 8 12v2l8-9 8 9v-3l8-10 8 10V110Z"/>
+      <path d="M0 80h1536v30H0Z"/>
+      <path d="M380 80V57l6-8 6 8v-4l6-8 6 8v-2l6-9 6 9v-3l6-8 6 8v-5l6-7 6 7V80Z"/>
+      <path d="M1250 80V55l6-8 6 8v-4l6-8 6 8v-2l6-9 6 9v-3l6-8 6 8v-5l6-7 6 7V80Z"/>
+      <g id="tower"><path d="M-22 0h44l-6-10h-32Z"/><rect x="-20" y="0" width="40" height="16"/><path d="M-16 16h4l4 60h-4ZM12 16h4l-4 60h-4ZM-14 30h28v3h-28ZM-12 52h24v3h-24Z"/></g>
+      <use href="#tower" x="470" y="8"/><use href="#tower" x="1110" y="2"/><use href="#tower" x="1310" y="12"/><use href="#tower" x="1480" y="6"/>
+    </g>
+  </svg>
+  <div class="header-row">
+    <a class="logo" href="#"><span class="w">BARRI</span><span class="r">CARD</span></a>
+    <nav class="tabs" aria-label="Navigation principale">
+      <a class="tab active" href="#">Collection</a><a class="tab" href="#">Decks</a><a class="tab" href="#">Camp</a><a class="tab" href="#">Missions</a>
+    </nav>
+    <button class="gear" aria-label="Paramètres"><svg viewBox="0 0 24 24"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.6 7.6 0 0 0-1.7-1L15 3.3h-4l-.3 2.6a7.6 7.6 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.6 7.6 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7.6 7.6 0 0 0 1.7-1l2.5 1 2-3.5ZM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z" transform="translate(-1 0)"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <aside class="side">
+    <div class="banner">Collection</div>
+    <div class="filters" id="filters"></div>
+    <div class="progress-box" id="progress"><strong>47 / 120</strong> <span>cartes découvertes</span><div class="bar"><b style="width:39%"></b></div></div>
+    <div class="view-switch"><span>Classeur</span><span>Grille</span></div>
+  </aside>
+
+  <section class="binder-wrap">
+    <div class="binder" id="binder">
+      <div class="spread" id="spread"></div>
+      <div class="edge-tabs" id="edge-tabs"></div>
+      <i class="corner-metal cm-tl"></i><i class="corner-metal cm-tr"></i><i class="corner-metal cm-bl"></i><i class="corner-metal cm-br"></i>
+    </div>
+    <nav class="pager" aria-label="Pages">
+      <button class="pbtn" data-go="first" aria-label="Première page">«</button>
+      <button class="pbtn" data-go="prev" aria-label="Page précédente">‹</button>
+      <output class="pnum" id="pnum"></output>
+      <button class="pbtn" data-go="next" aria-label="Page suivante">›</button>
+      <button class="pbtn" data-go="last" aria-label="Dernière page">»</button>
+    </nav>
+    <div class="hint" id="hint">Glisse le coin d'une page pour la tourner</div>
+  </section>
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="d-name">
+  <div class="big card" id="big"></div>
+  <div class="info" id="info">
+    <button class="close" id="close" aria-label="Fermer">×</button>
+    <p class="eyebrow" id="d-cat"></p>
+    <h2 id="d-name"></h2>
+    <span class="badge" id="d-rar"></span>
+    <p class="desc" id="d-desc"></p>
+    <div class="stats"><div><small>ATTAQUE</small><b id="d-atk"></b></div><div><small>DÉFENSE</small><b id="d-def"></b></div><div><small>COÛT</small><b id="d-cost"></b></div></div>
+    <button class="fav-btn" id="fav" aria-pressed="false"></button>
+    <div class="dnav"><button id="d-prev" aria-label="Carte précédente">←</button><span id="d-idx"></span><button id="d-next" aria-label="Carte suivante">→</button></div>
+  </div>
+</div>
+
+<!-- Barre de test : retour au menu + états à tester. À retirer pour l'intégration au jeu. -->
+<div class="ui-dev" id="ui-dev">
+  <a class="ui-dev-back" href="../../index.html">← Retour au menu</a>
+  <details><summary>Tester</summary><div id="ui-tests"></div></details>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

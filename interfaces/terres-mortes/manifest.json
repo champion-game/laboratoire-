@@ -1,0 +1,9 @@
+{
+  "_aide": "clé → fichier. Si « file » est absent, l'interface affiche « placeholder » ; placeholder null = rendu de secours dessiné par le code. Ne pas renommer les clés.",
+  "assets": {
+    "reference": {
+      "file": "assets/reference.jpg",
+      "placeholder": "assets/placeholders/reference.svg"
+    }
+  }
+}

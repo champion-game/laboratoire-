@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17120e">
+  <meta name="description" content="Explorez votre collection de survivants, de combattants et de reliques des terres mortes. Un classeur de cartes interactif au style post-apocalyptique.">
+  <title>Collection — Terres mortes</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23211a12'/%3E%3Cpath d='M15 8h34v48H15z' fill='%23d1ad6d' stroke='%23ac4821' stroke-width='4'/%3E%3Cpath d='M34 14 22 34h10l-3 16 15-25H33z' fill='%23211a12'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="collection" aria-label="Collection de cartes des terres mortes">
+    <h1 class="sr-only">Collection — Terres mortes</h1>
+    <div class="desktop-shell" id="desktop-shell">
+      <section class="board pristine" id="board" data-filter="all" aria-label="Classeur de collection">
+        <nav id="categories" aria-label="Catégories de cartes"></nav>
+        <div id="left-cards" role="group" aria-label="Cartes de la page actuelle"></div>
+        <div id="right-cards" role="group" aria-label="Aperçu de la page suivante"></div>
+        <nav id="edge-tabs" aria-label="Onglets du classeur"></nav>
+        <nav aria-label="Pages de la collection">
+          <button class="hotspot page-button" data-page="first" style="left:439px;top:651px;width:56px;height:45px" aria-label="Première page"></button>
+          <button class="hotspot page-button" data-page="prev" style="left:509px;top:651px;width:54px;height:45px" aria-label="Page précédente"></button>
+          <output id="page-number" aria-label="Page actuelle">1 / 6</output>
+          <button class="hotspot page-button" data-page="next" style="left:713px;top:651px;width:53px;height:45px" aria-label="Page suivante"></button>
+          <button class="hotspot page-button" data-page="last" style="left:779px;top:651px;width:54px;height:45px" aria-label="Dernière page"></button>
+        </nav>
+        <button class="hotspot collection-progress" id="progress-button" style="left:1081px;top:646px;width:178px;height:60px" aria-label="Voir la progression : 47 cartes découvertes sur 120"></button>
+      </section>
+    </div>
+    <section class="mobile-collection" aria-label="Collection sur mobile">
+      <header class="mobile-header"><p>ARCHIVES DES TERRES MORTES</p><h2>COLLECTION</h2><span>47 / 120 cartes découvertes</span></header>
+      <label class="mobile-select-label" for="mobile-category">CATÉGORIE</label>
+      <select id="mobile-category" aria-label="Catégorie de cartes"></select>
+      <div class="mobile-grid" id="mobile-grid"></div>
+      <nav class="mobile-pagination" aria-label="Pages sur mobile">
+        <button data-page="prev" aria-label="Page précédente">←</button><output id="mobile-page">1 / 6</output><button data-page="next" aria-label="Page suivante">→</button>
+      </nav>
+    </section>
+    <p class="sr-only" id="announcement" role="status" aria-live="polite"></p>
+  </main>
+  <dialog id="card-dialog" aria-labelledby="card-name">
+    <button class="close-dialog" aria-label="Fermer la fiche">×</button>
+    <div class="detail-art" id="detail-art" aria-hidden="true"></div>
+    <div class="detail-copy">
+      <p class="eyebrow" id="card-category"></p>
+      <h2 id="card-name"></h2>
+      <span class="rarity" id="card-rarity"></span>
+      <p class="description" id="card-description"></p>
+      <dl class="stats"><div><dt>ATTAQUE</dt><dd id="card-power"></dd></div><div><dt>DÉFENSE</dt><dd id="card-defense"></dd></div><div><dt>COÛT</dt><dd id="card-cost"></dd></div></dl>
+      <p class="card-status">✦ CARTE DÉCOUVERTE <span id="card-id"></span></p>
+      <button class="favorite-button" id="favorite-button" aria-pressed="false">☆ Marquer comme favorite</button>
+      <div class="detail-navigation"><button id="detail-prev" aria-label="Carte précédente">←</button><span id="detail-index"></span><button id="detail-next" aria-label="Carte suivante">→</button></div>
+    </div>
+  </dialog>
+  <dialog id="progress-dialog" aria-labelledby="progress-title">
+    <button class="close-dialog" aria-label="Fermer la progression">×</button>
+    <p class="eyebrow">ARCHIVES DES TERRES MORTES</p><h2 id="progress-title">Votre collection</h2>
+    <p class="progress-total"><strong>47</strong><span> / 120 cartes découvertes</span></p>
+    <progress value="47" max="120" aria-label="47 cartes découvertes sur 120"></progress>
+    <div id="progress-categories"></div>
+    <p class="progress-note">Certaines cartes appartiennent à plusieurs catégories.</p>
+  </dialog>
+  <noscript><p class="noscript">Activez JavaScript pour feuilleter le classeur et consulter les cartes.</p></noscript>
+<!-- Barre de test : retour au menu + états à tester. À retirer pour l'intégration au jeu. -->
+<div class="ui-dev" id="ui-dev">
+  <a class="ui-dev-back" href="../../index.html">← Retour au menu</a>
+  <details><summary>Tester</summary><div id="ui-tests"></div></details>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
