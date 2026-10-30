@@ -133,6 +133,7 @@ const at = (el, x, y) => { el.style.left = `${x * CW}px`; el.style.top = `${y * 
 
 function renderHud(){
   stage.dataset.phase = S.phase;
+  $('#viewport').dataset.phase = S.phase;   // le fond couvre tout l'écran, autour de la scène
   $('#phase-label').textContent = S.phase === 'jour' ? 'JOUR' : 'NIGHT';
   $('#jour-num').textContent = S.jour;
   $('#losanges').innerHTML = Array.from({ length: S.etapes }, (_, i) =>

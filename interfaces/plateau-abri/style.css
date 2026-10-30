@@ -92,8 +92,13 @@ button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* La scène est dessinée en 1536 × 1024 (taille de la maquette) puis mise à l'échelle de l'écran. */
-.viewport{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden}
-.stage{position:relative;width:1536px;height:1024px;flex:none;transform:scale(var(--k,1));transform-origin:center;overflow:hidden;font-family:var(--titre)}
+.viewport{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden;background:linear-gradient(#5f9fd6,#9cc8ea 34%,#f1d9a8 62%,#d9a35f 72%,#8a5a2d)}
+.viewport[data-phase=nuit]{background:linear-gradient(#070d22,#13214a 40%,#1d2c55 62%,#141a2e 75%,#0b0c12)}
+.viewport[data-phase=nuit-rouge]{background:linear-gradient(#2a0605,#6e110c 40%,#a51d14 62%,#4a0b08 76%,#140605)}
+/* Fond livré : une seule image qui couvre tout l'écran (recadrée selon le format), sans coupure autour de la scène. */
+.viewport.asset-on{background-size:cover!important;background-position:center!important}
+.viewport.asset-on .decor{display:none}
+.stage{position:absolute;left:50%;top:50%;width:1536px;height:1024px;transform:translate(-50%,-50%) scale(var(--k,1));transform-origin:center;overflow:hidden;font-family:var(--titre)}
 
 /* Visuel livré par Codex : il remplace le rendu de secours (.fx). */
 .asset-on{background-image:var(--asset)!important;background-size:100% 100%!important;background-repeat:no-repeat!important;background-color:transparent!important}
