@@ -42,7 +42,7 @@
       "placeholder": "assets/placeholders/carte.svg"
     },
     "livre": {
-      "file": "assets/book-texture.png",
+      "file": "assets/book-texture.webp",
       "placeholder": null
     },
     "parchemin": {

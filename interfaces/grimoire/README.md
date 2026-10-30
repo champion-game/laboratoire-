@@ -7,6 +7,14 @@ Atelier (modifier une carte, régler les textures, exporter en JSON) et sons de 
 
 Importé depuis le projet fourni par le propriétaire (`grimoire-source.zip`), puis mis aux règles du laboratoire.
 
+**Mise en page** : tout le livre est posé sur une scène au format de la maquette (16:9, 1280 × 720) qui s'adapte
+à l'écran sans défilement. Les éléments sont placés avec les coordonnées relevées sur `reference/maquette.jpg`
+(variable CSS `--u` = 1 pixel de la maquette). Sur un téléphone tenu en hauteur, les éléments s'empilent :
+menu, onglets, page des cartes, puis fiche.
+
+Cartes non trouvées : silhouette grisée avec cadenas, statistiques masquées. Nouvelles cartes : badge « NOUVEAU »
+qui disparaît quand le joueur regarde la carte. Le nom de chaque carte est écrit dans son cartouche.
+
 **Statut** : en cours  <!-- en cours / validé / intégré -->
 
 ## Fichiers
@@ -26,7 +34,8 @@ Sauvegarde dans le navigateur sous la clé `grimoire:sauvegarde` (cartes modifi�
 ## Tester
 
 Ouvrir la page via GitHub Pages (pas en `file://`). En bas à gauche, cliquer sur **Tester** :
-démo, grimoire vide, une seule page, toutes favorites, aucune favorite, visuels manquants, effacer la sauvegarde.
+démo, grimoire vide, une seule page, toutes favorites, aucune favorite, toutes trouvées, aucune trouvée,
+nouvelles cartes, mode jeu (sans atelier, défis, récompenses ni son), mode démo, visuels manquants, effacer la sauvegarde.
 Feuilleter : flèches sous les cartes, touches ← →, ou balayage horizontal sur mobile.
 
 ## Données attendues
@@ -40,10 +49,15 @@ GrimoireUI.setData({
       rarity: 'Rare',              // Commune | Rare | Épique | Légendaire
       health: 80, damage: 65, mobility: 55, resistance: 40,   // 0 à 100
       quote: 'Là où d’autres crient…', description: 'Spécialiste du tir…',
+      owned: true,                 // facultatif (true par défaut) : false = carte pas encore trouvée
+      isNew: false,                // facultatif : badge « NOUVEAU »
       img: 'url/optionnelle.webp' } // facultatif
   ],
   favorites: ['exil-001'],         // facultatif
-  selected: 'exil-001'             // facultatif : carte affichée à droite
+  selected: 'exil-001',            // facultatif : carte affichée à droite
+  features: {                      // facultatif : fonctions de démo (toutes true par défaut)
+    workshop: true, challenges: true, rewards: true, sound: true
+  }
 });
 ```
 
@@ -59,6 +73,7 @@ avec `postMessage({ from: 'grimoire', event, detail })`.
 |---|---|
 | `ready` | — |
 | `cardSelected` | `{ id }` |
+| `cardSeen` | `{ id }` (une carte « nouvelle » a été regardée) |
 | `pageChanged` | `{ page, section, category }` |
 | `sectionChanged` | `{ section }` |
 | `categoryChanged` | `{ category }` (`null` si l'onglet est désactivé) |
