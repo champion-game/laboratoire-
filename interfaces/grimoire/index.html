@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181710"><meta name="description" content="Entrez dans le Grimoire des Exilés. Feuilletez votre collection, découvrez vos cartes et façonnez votre propre album.">
+  <title>Le Grimoire des Exilés — Collection</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-cards" viewBox="0 0 24 24"><rect x="8" y="4" width="12" height="17" rx="1"/><path d="m5 18-4-2L5 1l11 3M11 8h6m-6 4h6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5C8 2 3 3 2 4v16c3-2 7-2 10 0 3-2 7-2 10 0V4c-3-2-7-2-10 1Zm0 0v15M5 7h4M5 10h4m6-3h4m-4 3h4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4-1 10-8 6-8-6L3 6Zm0 3v14M8 8l4-2 4 2"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0Zm0 2H3v3c0 3 2 5 5 5m9-8h4v3c0 3-2 5-5 5m-4 1v6m-5 1h10"/></symbol>
+    <symbol id="i-chest" viewBox="0 0 24 24"><path d="M3 10V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v13H3Zm0 0h18M9 10v5h6v-5M7 3v7m10-7v7"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><path d="M6 21v-6a6 6 0 0 1 12 0v6ZM5 5a3 3 0 0 0-1 6m16-6a3 3 0 0 1 0 6M3 14l-1 6m19-6 1 6"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m12 2 10 5v11l-10 5-10-5V7Zm0 10L2 7m10 5L22 7M12 12v11M7 4l10 6v6"/></symbol>
+    <symbol id="i-bio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M7 2c-5 5-2 10 3 9m7-9c5 5 2 10-3 9M2 15c2 7 8 7 10 2m10-2c-2 7-8 7-10 2M8 7a6 6 0 0 1 8 0M5 13a7 7 0 0 0 3 5m11-5a7 7 0 0 1-3 5"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="m2 21 8-18 5 12 3-7 5 13M5 14l5-4 5 9m-3-5-2 5m5-4 3 2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 1v5m0 12v5M1 12h5m12 0h5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21S1 14 1 7C1 1 9 0 12 6c3-6 11-5 11 1 0 7-11 14-11 14Z"/></symbol>
+    <symbol id="i-boot" viewBox="0 0 24 24"><path d="M8 2h11l-2 13 5 3v4H2v-5l5-2ZM9 7h5m-6 4h5M3 19h17"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 3 6 6M3 21l2-7L17 2l5 5L10 19Zm2-7 5 5M3 21l7-2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 2v14m-5-5 5 5 5-5M3 16v6h18v-6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M5 19 19 5"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M3 9h4l6-6v18l-6-6H3Zm13-3c5 3 5 9 0 12m-1-8c2 1 2 3 0 4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="m15 15 7 7"/></symbol>
+  </defs></svg>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="wordmark" href="./" aria-label="Le Grimoire des Exilés, accueil"><span class="brand-seal">E</span><span>LES CHRONIQUES<br><strong>DE L’EXIL</strong></span></a>
+    <div class="chapter-line"><span></span> L’ALBUM DES SURVIVANTS <span></span></div>
+    <button class="workshop-button" id="open-workshop"><svg><use href="#i-edit"/></svg><span>Atelier</span><span class="button-key">✦</span></button>
+  </header>
+  <main>
+    <div class="collection-heading"><div><span class="eyebrow">ARCHIVES DU DERNIER MONDE</span><h1>Votre collection<span>.</span></h1></div><p><span class="gold-dot"></span><b id="collection-total">36</b> cartes à découvrir <span class="heading-divider">/</span> Édition I</p></div>
+    <div class="album-scene">
+      <nav class="sidebar" aria-label="Navigation de la collection">
+        <div class="collection-plaque"><svg><use href="#i-cards"/></svg><span>COLLECTION</span></div>
+        <div class="sidebar-links">
+          <button class="nav-item active" data-section="album"><svg><use href="#i-book"/></svg><span>ALBUM<br>PREMIUM</span><i></i></button>
+          <button class="nav-item" data-section="all"><svg><use href="#i-cards"/></svg><span>TOUTES<br>LES CARTES</span></button>
+          <button class="nav-item" data-section="factions"><svg><use href="#i-shield"/></svg><span>FACTIONS</span></button>
+          <button class="nav-item" data-section="rarities"><svg><use href="#i-star"/></svg><span>RARETÉS</span></button>
+          <button class="nav-item" data-section="challenges"><svg><use href="#i-trophy"/></svg><span>DÉFIS</span></button>
+          <button class="nav-item" data-section="rewards"><svg><use href="#i-chest"/></svg><span>RÉCOMPENSES</span></button>
+        </div>
+        <div class="sidebar-bottom"><span>VOL. I</span><div>✦</div><small>CEUX QUI RESTENT</small></div>
+      </nav>
+      <div class="book" id="book">
+        <div class="book-texture" aria-hidden="true"></div>
+        <section class="left-page" aria-label="Cartes de la collection">
+          <div class="page-header"><span id="page-heading">LES SURVIVANTS</span><span id="page-count">36 CARTES</span></div>
+          <div class="filter-strip" id="filter-strip" hidden></div>
+          <div class="card-grid" id="card-grid"></div>
+          <div id="special-page" class="special-page" hidden></div>
+          <div class="page-navigation"><span class="page-line"></span><button id="previous-page" aria-label="Tourner la page précédente"><svg class="flipped"><use href="#i-arrow"/></svg></button><span id="page-number" aria-live="polite">01 <i>/</i> 04</span><button id="next-page" aria-label="Tourner la page suivante"><svg><use href="#i-arrow"/></svg></button><span class="page-line"></span></div>
+        </section>
+        <section class="right-page" id="detail-page" aria-label="Détails de la carte sélectionnée"></section>
+        <div class="turning-page" id="turning-page" aria-hidden="true"><div class="turn-face turn-front"></div><div class="turn-face turn-back"></div></div>
+        <div class="spine-highlight" aria-hidden="true"></div>
+      </div>
+      <nav class="category-tabs" aria-label="Types de cartes">
+        <button class="category-tab tab-red" data-category="unit" aria-pressed="false"><svg><use href="#i-users"/></svg><span>UNITÉS</span></button>
+        <button class="category-tab tab-cream" data-category="defense" aria-pressed="false"><svg><use href="#i-shield"/></svg><span>DÉFENSE</span></button>
+        <button class="category-tab tab-green" data-category="item" aria-pressed="false"><svg><use href="#i-box"/></svg><span>OBJETS</span></button>
+        <button class="category-tab tab-gray" data-category="zombie" aria-pressed="false"><svg><use href="#i-bio"/></svg><span>ZOMBIES</span></button>
+        <button class="category-tab tab-gold" data-category="rare" aria-pressed="false"><svg><use href="#i-star"/></svg><span>RARETÉS</span></button>
+      </nav>
+    </div>
+    <footer class="album-footer"><span><svg><use href="#i-cards"/></svg> Chaque carte a une histoire. Découvrez la vôtre.</span><div><button id="sound-toggle" aria-label="Activer les sons de page" aria-pressed="false"><svg><use href="#i-sound"/></svg><span>SON DÉSACTIVÉ</span></button><span class="keyboard-hint"><kbd>←</kbd><kbd>→</kbd> POUR FEUILLETER</span></div></footer>
+  </main>
+  <div class="drawer-overlay" id="drawer-overlay" hidden></div>
+  <aside class="workshop" id="workshop" aria-labelledby="workshop-title" aria-modal="true" role="dialog" hidden>
+    <div class="workshop-header"><div><span class="eyebrow">FAÇONNEZ VOTRE UNIVERS</span><h2 id="workshop-title">L’atelier du grimoire</h2></div><button class="icon-button" id="close-workshop" aria-label="Fermer l’atelier"><svg><use href="#i-close"/></svg></button></div>
+    <div class="workshop-tabs" role="tablist"><button role="tab" id="tab-card" aria-selected="true" aria-controls="panel-card" data-workshop-tab="card">La carte</button><button role="tab" id="tab-textures" aria-selected="false" aria-controls="panel-textures" data-workshop-tab="textures">Les textures</button></div>
+    <div class="workshop-body">
+      <section id="panel-card" role="tabpanel" aria-labelledby="tab-card"><p class="workshop-intro">Donnez votre propre histoire à la carte sélectionnée.</p><form id="card-form">
+        <label>Nom de la carte<input name="name" maxlength="60" required></label>
+        <div class="form-row"><label>Faction<select name="faction"><option>Les Exilés</option><option>Les Veilleurs</option><option>La Légion</option><option>Les Oubliés</option></select></label><label>Rareté<select name="rarity"><option>Commune</option><option>Rare</option><option>Épique</option><option>Légendaire</option></select></label></div>
+        <label>Citation<textarea name="quote" rows="2" maxlength="160"></textarea></label>
+        <label>Histoire<textarea name="description" rows="4" maxlength="450"></textarea></label>
+        <div class="stats-inputs"><label>Santé<input name="health" type="number" min="0" max="100" required></label><label>Dégâts<input name="damage" type="number" min="0" max="100" required></label><label>Mobilité<input name="mobility" type="number" min="0" max="100" required></label><label>Résistance<input name="resistance" type="number" min="0" max="100" required></label></div>
+        <button class="primary-button" type="submit"><svg><use href="#i-edit"/></svg> Enregistrer la carte</button><p class="save-note">Vos modifications sont conservées dans ce navigateur.</p>
+      </form></section>
+      <section id="panel-textures" role="tabpanel" aria-labelledby="tab-textures" hidden><p class="workshop-intro">Du papier au cuir, chaque matière se travaille.</p><div class="texture-gallery" id="texture-gallery"></div>
+        <label class="range-label">Chaleur du parchemin <output id="warmth-value">50 %</output><input type="range" id="warmth" min="0" max="100" value="50"></label>
+        <label class="range-label">Patine des pages <output id="patina-value">70 %</output><input type="range" id="patina" min="0" max="100" value="70"></label>
+        <label class="range-label">Vitesse du feuilletage <output id="speed-value">Naturelle</output><input type="range" id="turn-speed" min="500" max="1500" step="100" value="1000"></label>
+      </section>
+      <div class="workshop-export"><span>EMPORTER VOTRE CRÉATION</span><button id="export-data"><svg><use href="#i-download"/></svg> Exporter les cartes (.json)</button></div>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Barre de test : retour au menu + états à tester. À retirer pour l'intégration au jeu. -->
+  <div class="ui-dev" id="ui-dev">
+    <a class="ui-dev-back" href="../../index.html">← Retour au menu</a>
+    <details><summary>Tester</summary><div id="ui-tests"></div></details>
+  </div>
+</body>
+</html>
