@@ -167,7 +167,7 @@ function renderMain(){
     return `<button class="carte" data-i="${i}" aria-pressed="${sel}" aria-label="${c.nom}, coût ${c.cout}" style="--r:${rot(i).toFixed(1)}deg">
       <span class="cadre" data-asset="carte-modele"></span>
       <span class="art" data-asset="carte-${c.id}"><span class="fx">${cardArt(c.id)}</span></span>
-      <span class="nom">${c.nom}</span><span class="cout">${c.cout}</span></button>`;
+      <span class="nom">${c.nom}</span><span class="cout" data-asset="pastille-cout">${c.cout}</span></button>`;
   }).join('') || '';
 }
 
