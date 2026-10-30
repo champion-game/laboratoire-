@@ -48,15 +48,15 @@
     },
     "panneau-papier": {
       "type": "cadre-9",
-      "file": "assets/panneaux/panneau-papier.png",
+      "file": "assets/ui/panels/panel_paper_medium.png",
       "placeholder": null,
-      "bord": 24
+      "bord": 18
     },
     "panneau-sombre": {
       "type": "cadre-9",
-      "file": "assets/panneaux/panneau-sombre.png",
+      "file": "assets/ui/panels/panel_dark_medium.png",
       "placeholder": null,
-      "bord": 24
+      "bord": 18
     },
     "illus-abri": {
       "type": "illustration",
@@ -70,7 +70,7 @@
     },
     "dos-carte": {
       "type": "illustration",
-      "file": "assets/cartes/dos-carte.webp",
+      "file": "assets/ui/cards/card_back.png",
       "placeholder": null
     },
     "carte-modele": {
@@ -116,29 +116,29 @@
     "bouton-ligne": {
       "type": "bouton",
       "files": {
-        "normal": "assets/boutons/ligne-normal.png",
-        "survol": "assets/boutons/ligne-survol.png",
-        "actif": "assets/boutons/ligne-actif.png",
-        "desactive": "assets/boutons/ligne-desactive.png"
+        "normal": "assets/ui/cards/list_row_normal.png",
+        "survol": "assets/ui/cards/list_row_normal.png",
+        "actif": "assets/ui/cards/list_row_selected.png",
+        "desactive": "assets/ui/cards/list_row_disabled.png"
       },
       "placeholder": null
     },
     "bouton-affronter": {
       "type": "bouton",
       "files": {
-        "normal": "assets/boutons/affronter-normal.png",
-        "survol": "assets/boutons/affronter-survol.png",
-        "appui": "assets/boutons/affronter-appui.png",
-        "desactive": "assets/boutons/affronter-desactive.png"
+        "normal": "assets/ui/buttons/button_cta_normal.png",
+        "survol": "assets/ui/buttons/button_cta_hover.png",
+        "appui": "assets/ui/buttons/button_cta_pressed.png",
+        "desactive": "assets/ui/buttons/button_cta_disabled.png"
       },
       "placeholder": null
     },
     "bouton-carre": {
       "type": "bouton",
       "files": {
-        "normal": "assets/boutons/carre-normal.png",
-        "survol": "assets/boutons/carre-survol.png",
-        "appui": "assets/boutons/carre-appui.png"
+        "normal": "assets/ui/buttons/button_square_normal.png",
+        "survol": "assets/ui/buttons/button_square_hover.png",
+        "appui": "assets/ui/buttons/button_square_pressed.png"
       },
       "placeholder": null
     },
@@ -153,7 +153,7 @@
     },
     "icone-son": {
       "type": "icone",
-      "file": "assets/icones/son.png",
+      "file": "assets/ui/icons/icon_speaker.png",
       "placeholder": null
     },
     "icone-son-coupe": {
@@ -163,7 +163,7 @@
     },
     "icone-musique": {
       "type": "icone",
-      "file": "assets/icones/musique.png",
+      "file": "assets/ui/icons/icon_music.png",
       "placeholder": null
     },
     "icone-musique-coupee": {
@@ -173,32 +173,47 @@
     },
     "icone-plein-ecran": {
       "type": "icone",
-      "file": "assets/icones/plein-ecran.png",
+      "file": "assets/ui/icons/icon_fullscreen.png",
       "placeholder": null
     },
     "icone-stats": {
       "type": "icone",
-      "file": "assets/icones/stats.png",
+      "file": "assets/ui/icons/icon_chart.png",
       "placeholder": null
     },
     "icone-options": {
       "type": "icone",
-      "file": "assets/icones/options.png",
+      "file": "assets/ui/icons/icon_gear.png",
       "placeholder": null
     },
     "icone-regles": {
       "type": "icone",
-      "file": "assets/icones/regles.png",
+      "file": "assets/ui/icons/icon_book.png",
       "placeholder": null
     },
     "icone-reserve": {
       "type": "icone",
-      "file": "assets/icones/reserve.png",
+      "file": "assets/ui/icons/icon_cards.png",
       "placeholder": null
     },
     "icone-defausse": {
       "type": "icone",
-      "file": "assets/icones/defausse.png",
+      "file": "assets/ui/icons/icon_trash.png",
+      "placeholder": null
+    },
+    "panneau-deck": {
+      "type": "illustration",
+      "file": "assets/ui/panels/panel_deck.png",
+      "placeholder": null
+    },
+    "fond-vitesse": {
+      "type": "illustration",
+      "file": "assets/ui/buttons/speed_control_blank.png",
+      "placeholder": null
+    },
+    "pastille-cout": {
+      "type": "illustration",
+      "file": "assets/ui/cards/counter_cost.png",
       "placeholder": null
     }
   }

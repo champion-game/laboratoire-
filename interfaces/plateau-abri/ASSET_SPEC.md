@@ -15,6 +15,24 @@ Règles communes :
 - PNG pour tout ce qui a de la transparence, WebP qualité ≈ 85 pour les images opaques.
 - Si un fichier manque, l'interface garde son rendu CSS/SVG actuel. Rien ne casse.
 
+## Pack graphique « barricard_final_ui_pack » (fourni par le propriétaire)
+
+Les fichiers utilisés sont copiés dans `assets/ui/`, sous leur nom d'origine. Les lignes qu'ils couvrent sont au statut `livré`.
+Trois éléments du pack, absents de la liste d'origine, sont aussi branchés :
+
+| # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
+|---|---|---|---|---|---|---|---|
+| P1 | `panneau-deck` | `assets/ui/panels/panel_deck.png` | illustration | 340 × 200 | oui | Panneau du deck avec emplacement de carte dessiné (le dos de carte est posé dedans). | livré |
+| P2 | `fond-vitesse` | `assets/ui/buttons/speed_control_blank.png` | illustration | 300 × 82 | oui | Fond du sélecteur de vitesse à 3 cases. | livré |
+| P3 | `pastille-cout` | `assets/ui/cards/counter_cost.png` | illustration | 64 × 64 | oui | Pastille du coût des cartes (le code écrit le chiffre). | livré |
+
+Éléments du pack **non utilisés** :
+- `panel_day` et `panel_night_red` : les losanges sont peints dedans (leur nombre ne peut pas changer) et il n'y a pas de version nuit bleue.
+- `panel_available_cards` : les lignes sont peintes dedans.
+- `panel_reserve_discard` : réserve et défausse forment un seul bloc.
+- cadres de cartes : la carte modèle est utilisée partout.
+- onglets, jauges, compteurs attaque/PV/soin, champ de recherche, `hud_frame`, `right_scenery_red` (330 × 390, trop petit pour un fond).
+
 ## A. Fonds d'écran
 
 **Ils couvrent tout l'écran, sans coupure.** Une seule scène continue peinte d'un bord à l'autre. On la voit à droite de l'interface,
@@ -60,8 +78,8 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 | 7 | `bandeau-jour` | `assets/panneaux/bandeau-jour.webp` | illustration | 610 × 336 | non | Fond du panneau « JOUR » : papier crème vieilli, soleil jaune à droite, silhouette noire d'une tour de guet et de clôtures en bas. Zone de gauche (≈ 40 %) et bande du bas (≈ 50 px) **calmes** pour le texte et les losanges. | à faire |
 | 8 | `bandeau-nuit` | `assets/panneaux/bandeau-nuit.webp` | illustration | 610 × 336 | non | Même cadrage la nuit : ciel bleu nuit, lune blanche, 2 tours de guet, cimetière en silhouette. | à faire |
 | 9 | `bandeau-nuit-rouge` | `assets/panneaux/bandeau-nuit-rouge.webp` | illustration | 610 × 336 | non | Même cadrage : ciel rouge, lune de sang. | à faire |
-| 10 | `panneau-papier` | `assets/panneaux/panneau-papier.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre « papier » (panneau SHELTER) : papier crème taché, liseré sombre, coins usés. | à faire |
-| 11 | `panneau-sombre` | `assets/panneaux/panneau-sombre.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre sombre (deck, réserve, défausse, liste, zombies, vitesse, menu bas) : métal noirci, bord brun fin, rivets discrets dans les coins. | à faire |
+| 10 | `panneau-papier` | `assets/ui/panels/panel_paper_medium.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre « papier » (panneau SHELTER) : papier crème taché, liseré sombre, coins usés. | livré |
+| 11 | `panneau-sombre` | `assets/ui/panels/panel_dark_medium.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre sombre (deck, réserve, défausse, liste, zombies, vitesse, menu bas) : métal noirci, bord brun fin, rivets discrets dans les coins. | livré |
 | 12 | `illus-abri` | `assets/panneaux/illus-abri.png` | illustration | 340 × 140 | oui | Silhouette noire d'un fort/bâtiment fortifié avec tours, style encre (panneau SHELTER). | à faire |
 | 13 | `illus-horde` | `assets/panneaux/illus-horde.png` | illustration | 236 × 200 | oui | Trois silhouettes de zombies rouge vif (#e0291c), de face, épaules tombantes. | à faire |
 
@@ -73,7 +91,7 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 14 | `dos-carte` | `assets/cartes/dos-carte.webp` | illustration | 224 × 300 | non | Dos de carte : fond rouge très sombre, symbole biohazard rouge lumineux, cadre crème fin. | à faire |
+| 14 | `dos-carte` | `assets/ui/cards/card_back.png` | illustration | 224 × 300 | non | Dos de carte : fond rouge très sombre, symbole biohazard rouge lumineux, cadre crème fin. | livré |
 | 15a | `carte-modele` | `assets/cartes/carte-modele.webp` | illustration | 1024 × 1536 | non | Carte complète fournie par le propriétaire (Traqueur), utilisée pour toutes les cartes. | validé |
 | 15 | `cadre-carte` | `assets/cartes/cadre-carte.png` | illustration | 316 × 424 | oui (fenêtre) | Cadre de carte : papier crème vieilli, bord sombre, **fenêtre transparente** pour l'illustration (x 20→296, y 24→304) et bandeau du nom en bas (**vide**). Pas de pastille de coût (le code la dessine). | refusé |
 | 16 | `carte-barricade` | `assets/cartes/carte-barricade.webp` | illustration | 276 × 280 | non | Planches clouées en croix, encre noire sur papier, éclaboussures grises. | refusé |
@@ -91,7 +109,7 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 26 | `bouton-ligne` | `assets/boutons/ligne-{normal,survol,actif,desactive}.png` | bouton | 552 × 88 (×4) | oui | Ligne de liste en papier crème. **actif** : liseré rouge lumineux. **desactive** : gris. Garder à droite un emplacement libre pour la pastille du nombre. | à faire |
+| 26 | `bouton-ligne` | `assets/ui/cards/list_row_disabled.png, assets/ui/cards/list_row_normal.png, assets/ui/cards/list_row_selected.png` | bouton | 552 × 88 (×4) | oui | Ligne de liste en papier crème. **actif** : liseré rouge lumineux. **desactive** : gris. Garder à droite un emplacement libre pour la pastille du nombre. | livré |
 | 27 | `liste-barricade` | `assets/icones/liste-barricade.png` | icone | 112 × 72 | oui | Planches en croix, encre noire. | à faire |
 | 28 | `liste-cloture` | `assets/icones/liste-cloture.png` | icone | 112 × 72 | oui | Clôture de piquets. | à faire |
 | 29 | `liste-epave` | `assets/icones/liste-epave.png` | icone | 112 × 72 | oui | Voiture de profil. | à faire |
@@ -104,24 +122,24 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 34 | `bouton-affronter` | `assets/boutons/affronter-{normal,survol,appui,desactive}.png` | bouton | 592 × 256 (×4) | oui | Grand bouton rouge sang texturé, cadre sombre, 2 silhouettes de zombies sombres à gauche. **Sans texte.** | à faire |
-| 35 | `bouton-carre` | `assets/boutons/carre-{normal,survol,appui}.png` | bouton | 108 × 96 (×3) | oui | Petit bouton carré noir à bord métal (son, musique, plein écran, stats). Sans icône. | à faire |
+| 34 | `bouton-affronter` | `assets/ui/buttons/button_cta_disabled.png, assets/ui/buttons/button_cta_hover.png, assets/ui/buttons/button_cta_normal.png, assets/ui/buttons/button_cta_pressed.png` | bouton | 592 × 256 (×4) | oui | Grand bouton rouge sang texturé, cadre sombre, 2 silhouettes de zombies sombres à gauche. **Sans texte.** | livré |
+| 35 | `bouton-carre` | `assets/ui/buttons/button_square_hover.png, assets/ui/buttons/button_square_normal.png, assets/ui/buttons/button_square_pressed.png` | bouton | 108 × 96 (×3) | oui | Petit bouton carré noir à bord métal (son, musique, plein écran, stats). Sans icône. | livré |
 | 36 | `bouton-vitesse` | `assets/boutons/vitesse-{normal,survol,actif}.png` | bouton | 220 × 128 (×3) | oui | Segment du sélecteur de vitesse. **actif** : cadre jaune/or (#f0b429). Sans texte. | à faire |
 
 ## G. Icônes de l'interface (blanc cassé #ece3cf, fond transparent)
 
 | # | Clé | Fichier | Type | Taille | Statut |
 |---|---|---|---|---|---|
-| 37 | `icone-son` | `assets/icones/son.png` | icone | 96 × 96 | à faire |
+| 37 | `icone-son` | `assets/ui/icons/icon_speaker.png` | icone | 96 × 96 | livré |
 | 38 | `icone-son-coupe` | `assets/icones/son-coupe.png` | icone | 96 × 96 | à faire |
-| 39 | `icone-musique` | `assets/icones/musique.png` | icone | 96 × 96 | à faire |
+| 39 | `icone-musique` | `assets/ui/icons/icon_music.png` | icone | 96 × 96 | livré |
 | 40 | `icone-musique-coupee` | `assets/icones/musique-coupee.png` | icone | 96 × 96 | à faire |
-| 41 | `icone-plein-ecran` | `assets/icones/plein-ecran.png` | icone | 96 × 96 | à faire |
-| 42 | `icone-stats` | `assets/icones/stats.png` | icone | 96 × 96 | à faire |
-| 43 | `icone-options` | `assets/icones/options.png` | icone | 96 × 96 | à faire |
-| 44 | `icone-regles` | `assets/icones/regles.png` | icone | 96 × 96 | à faire |
-| 45 | `icone-reserve` | `assets/icones/reserve.png` | icone | 96 × 96 | à faire |
-| 46 | `icone-defausse` | `assets/icones/defausse.png` | icone | 96 × 96 | à faire |
+| 41 | `icone-plein-ecran` | `assets/ui/icons/icon_fullscreen.png` | icone | 96 × 96 | livré |
+| 42 | `icone-stats` | `assets/ui/icons/icon_chart.png` | icone | 96 × 96 | livré |
+| 43 | `icone-options` | `assets/ui/icons/icon_gear.png` | icone | 96 × 96 | livré |
+| 44 | `icone-regles` | `assets/ui/icons/icon_book.png` | icone | 96 × 96 | livré |
+| 45 | `icone-reserve` | `assets/ui/icons/icon_cards.png` | icone | 96 × 96 | livré |
+| 46 | `icone-defausse` | `assets/ui/icons/icon_trash.png` | icone | 96 × 96 | livré |
 
 ## H. Pièces du plateau (vue de dessus, fond transparent)
 
