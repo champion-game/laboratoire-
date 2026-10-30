@@ -1,0 +1,193 @@
+{
+  "_aide": "clé → fichier. Si « file » est absent, l'interface affiche « placeholder » ; placeholder null = rendu de secours dessiné par le code. Ne pas renommer les clés.",
+  "assets": {
+    "tm-0": {
+      "file": "assets/tm-0.webp",
+      "placeholder": "assets/placeholders/tm-0.svg"
+    },
+    "tm-1": {
+      "file": "assets/tm-1.webp",
+      "placeholder": "assets/placeholders/tm-1.svg"
+    },
+    "tm-2": {
+      "file": "assets/tm-2.webp",
+      "placeholder": "assets/placeholders/tm-2.svg"
+    },
+    "tm-3": {
+      "file": "assets/tm-3.webp",
+      "placeholder": "assets/placeholders/tm-3.svg"
+    },
+    "tm-4": {
+      "file": "assets/tm-4.webp",
+      "placeholder": "assets/placeholders/tm-4.svg"
+    },
+    "tm-5": {
+      "file": "assets/tm-5.webp",
+      "placeholder": "assets/placeholders/tm-5.svg"
+    },
+    "tm-6": {
+      "file": "assets/tm-6.webp",
+      "placeholder": "assets/placeholders/tm-6.svg"
+    },
+    "tm-7": {
+      "file": "assets/tm-7.webp",
+      "placeholder": "assets/placeholders/tm-7.svg"
+    },
+    "tm-8": {
+      "file": "assets/tm-8.webp",
+      "placeholder": "assets/placeholders/tm-8.svg"
+    },
+    "carte-nomade": {
+      "file": "assets/cartes/carte-nomade.webp",
+      "placeholder": null
+    },
+    "carte-vagabonde": {
+      "file": "assets/cartes/carte-vagabonde.webp",
+      "placeholder": null
+    },
+    "carte-pyromane": {
+      "file": "assets/cartes/carte-pyromane.webp",
+      "placeholder": null
+    },
+    "carte-decontaminateur": {
+      "file": "assets/cartes/carte-decontaminateur.webp",
+      "placeholder": null
+    },
+    "carte-veilleur": {
+      "file": "assets/cartes/carte-veilleur.webp",
+      "placeholder": null
+    },
+    "carte-caravane": {
+      "file": "assets/cartes/carte-caravane.webp",
+      "placeholder": null
+    },
+    "carte-relais": {
+      "file": "assets/cartes/carte-relais.webp",
+      "placeholder": null
+    },
+    "carte-boutefeu": {
+      "file": "assets/cartes/carte-boutefeu.webp",
+      "placeholder": null
+    },
+    "carte-zone-rouge": {
+      "file": "assets/cartes/carte-zone-rouge.webp",
+      "placeholder": null
+    },
+    "carte-maraudeuse": {
+      "file": "assets/cartes/carte-maraudeuse.webp",
+      "placeholder": null
+    },
+    "carte-recuperateur": {
+      "file": "assets/cartes/carte-recuperateur.webp",
+      "placeholder": null
+    },
+    "carte-passeuse": {
+      "file": "assets/cartes/carte-passeuse.webp",
+      "placeholder": null
+    },
+    "carte-pisteur": {
+      "file": "assets/cartes/carte-pisteur.webp",
+      "placeholder": null
+    },
+    "carte-medecin": {
+      "file": "assets/cartes/carte-medecin.webp",
+      "placeholder": null
+    },
+    "carte-messagere": {
+      "file": "assets/cartes/carte-messagere.webp",
+      "placeholder": null
+    },
+    "carte-ferrailleur": {
+      "file": "assets/cartes/carte-ferrailleur.webp",
+      "placeholder": null
+    },
+    "carte-archiviste": {
+      "file": "assets/cartes/carte-archiviste.webp",
+      "placeholder": null
+    },
+    "carte-guetteuse": {
+      "file": "assets/cartes/carte-guetteuse.webp",
+      "placeholder": null
+    },
+    "carte-exile": {
+      "file": "assets/cartes/carte-exile.webp",
+      "placeholder": null
+    },
+    "carte-chasseur-cendres": {
+      "file": "assets/cartes/carte-chasseur-cendres.webp",
+      "placeholder": null
+    },
+    "carte-mecanicienne": {
+      "file": "assets/cartes/carte-mecanicienne.webp",
+      "placeholder": null
+    },
+    "carte-lame-rouge": {
+      "file": "assets/cartes/carte-lame-rouge.webp",
+      "placeholder": null
+    },
+    "carte-franc-tireur": {
+      "file": "assets/cartes/carte-franc-tireur.webp",
+      "placeholder": null
+    },
+    "carte-chasseur-primes": {
+      "file": "assets/cartes/carte-chasseur-primes.webp",
+      "placeholder": null
+    },
+    "carte-ecorcheur": {
+      "file": "assets/cartes/carte-ecorcheur.webp",
+      "placeholder": null
+    },
+    "carte-rodeur": {
+      "file": "assets/cartes/carte-rodeur.webp",
+      "placeholder": null
+    },
+    "carte-porte-banniere": {
+      "file": "assets/cartes/carte-porte-banniere.webp",
+      "placeholder": null
+    },
+    "carte-colosse": {
+      "file": "assets/cartes/carte-colosse.webp",
+      "placeholder": null
+    },
+    "carte-brise-mur": {
+      "file": "assets/cartes/carte-brise-mur.webp",
+      "placeholder": null
+    },
+    "carte-mortier-mobile": {
+      "file": "assets/cartes/carte-mortier-mobile.webp",
+      "placeholder": null
+    },
+    "carte-faucheur": {
+      "file": "assets/cartes/carte-faucheur.webp",
+      "placeholder": null
+    },
+    "carte-radio": {
+      "file": "assets/cartes/carte-radio.webp",
+      "placeholder": null
+    },
+    "carte-sapeur": {
+      "file": "assets/cartes/carte-sapeur.webp",
+      "placeholder": null
+    },
+    "carte-ravitailleur": {
+      "file": "assets/cartes/carte-ravitailleur.webp",
+      "placeholder": null
+    },
+    "carte-tourelle-jumelee": {
+      "file": "assets/cartes/carte-tourelle-jumelee.webp",
+      "placeholder": null
+    },
+    "carte-nid-mitrailleuse": {
+      "file": "assets/cartes/carte-nid-mitrailleuse.webp",
+      "placeholder": null
+    },
+    "carte-gardienne": {
+      "file": "assets/cartes/carte-gardienne.webp",
+      "placeholder": null
+    },
+    "carte-tempete": {
+      "file": "assets/cartes/carte-tempete.webp",
+      "placeholder": null
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "_aide": "clé → fichier. Si « file » est absent, l'interface affiche « placeholder » ; placeholder null = rendu de secours dessiné par le code. Ne pas renommer les clés.",
+  "assets": {
+    "carte-traqueur": {
+      "file": "assets/cartes/carte-traqueur.webp",
+      "placeholder": "assets/placeholders/carte-traqueur.svg"
+    },
+    "carte-partisane": {
+      "file": "assets/cartes/carte-partisane.webp",
+      "placeholder": null
+    },
+    "carte-chien": {
+      "file": "assets/cartes/carte-chien.webp",
+      "placeholder": null
+    },
+    "carte-bouclier": {
+      "file": "assets/cartes/carte-bouclier.webp",
+      "placeholder": null
+    },
+    "carte-tourelle": {
+      "file": "assets/cartes/carte-tourelle.webp",
+      "placeholder": null
+    },
+    "carte-rodeur": {
+      "file": "assets/cartes/carte-rodeur.webp",
+      "placeholder": null
+    },
+    "carte-colosse": {
+      "file": "assets/cartes/carte-colosse.webp",
+      "placeholder": null
+    },
+    "carte-sacs": {
+      "file": "assets/cartes/carte-sacs.webp",
+      "placeholder": null
+    },
+    "carte-jerrican": {
+      "file": "assets/cartes/carte-jerrican.webp",
+      "placeholder": null
+    },
+    "carte-medikit": {
+      "file": "assets/cartes/carte-medikit.webp",
+      "placeholder": null
+    },
+    "carte-fusee": {
+      "file": "assets/cartes/carte-fusee.webp",
+      "placeholder": null
+    },
+    "carte-barbeles": {
+      "file": "assets/cartes/carte-barbeles.webp",
+      "placeholder": null
+    },
+    "carte-pillard": {
+      "file": "assets/cartes/carte-pillard.webp",
+      "placeholder": null
+    }
+  }
+}

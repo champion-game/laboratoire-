@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="1152" viewBox="0 0 768 1152">
+<rect width="768" height="1152" fill="#2a231c"/>
+<path d="M0 0L768 1152M768 0L0 1152" stroke="#c99a3b" stroke-opacity=".25" stroke-width="2"/>
+<rect x="4" y="4" width="760" height="1144" fill="none" stroke="#c99a3b" stroke-width="4" stroke-dasharray="16 10"/>
+<g font-family="sans-serif" text-anchor="middle" fill="#e6dcc6">
+<text x="384.0" y="522.0" font-size="54" font-weight="bold">PLACEHOLDER</text>
+<text x="384.0" y="597.6" font-size="43.2">carte-traqueur</text>
+<text x="384.0" y="662.4" font-size="37.8" fill="#9a8f7a">768 × 1152</text>
+</g></svg>

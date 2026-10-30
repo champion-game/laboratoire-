@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barricard — Collection</title>
+<link rel="preload" as="image" href="assets/cartes/carte-traqueur.webp">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- shared SVG filters for the hand-drawn look -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+  <filter id="splatter"><feTurbulence type="fractalNoise" baseFrequency=".09" numOctaves="3" seed="9"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter>
+</svg>
+
+<header>
+  <svg class="sky" viewBox="0 0 1536 130" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs><radialGradient id="sun"><stop offset="0" stop-color="#ff4a2a"/><stop offset=".6" stop-color="#e2321c"/><stop offset="1" stop-color="#e2321c" stop-opacity="0"/></radialGradient></defs>
+    <circle cx="690" cy="40" r="60" fill="url(#sun)" opacity=".9"/>
+    <g stroke="#7a2a1a" stroke-width="1" opacity=".5"><line x1="690" y1="40" x2="520" y2="0"/><line x1="690" y1="40" x2="860" y2="0"/><line x1="690" y1="40" x2="420" y2="40"/><line x1="690" y1="40" x2="960" y2="40"/></g>
+    <g fill="#16110d">
+      <path d="M0 130V70l8-10 8 10v-6l8-10 8 10v-4l8-12 8 12v2l8-9 8 9v-3l8-10 8 10V130Z"/>
+      <path d="M0 95h1536v35H0Z"/>
+      <path d="M380 95V72l6-8 6 8v-4l6-8 6 8v-2l6-9 6 9v-3l6-8 6 8v-5l6-7 6 7V95Z"/>
+      <path d="M1000 95V76l6-8 6 8v-4l6-8 6 8v-2l6-9 6 9v-3l6-8 6 8V95Z"/>
+      <path d="M1250 95V70l6-8 6 8v-4l6-8 6 8v-2l6-9 6 9v-3l6-8 6 8v-5l6-7 6 7V95Z"/>
+      <g id="tower"><path d="M-22 0h44l-6-10h-32Z"/><rect x="-20" y="0" width="40" height="16"/><path d="M-16 16h4l4 60h-4ZM12 16h4l-4 60h-4ZM-14 30h28v3h-28ZM-12 52h24v3h-24Z"/><path d="M-14 33l26 19-2 3-26-19ZM14 33l-26 19 2 3 26-19Z"/></g>
+      <use href="#tower" x="470" y="18"/><use href="#tower" x="1110" y="10"/><use href="#tower" x="1310" y="22"/><use href="#tower" x="1480" y="14"/><use href="#tower" x="300" y="34"/>
+    </g>
+  </svg>
+  <div class="header-row">
+    <div class="logo"><span class="w">BARRI</span><span class="r">CARD</span></div>
+    <nav class="tabs" aria-label="Navigation principale">
+      <button class="tab active">Collection</button><button class="tab">Decks</button><button class="tab">Camp</button><button class="tab">Missions</button>
+    </nav>
+    <button class="gear" aria-label="Paramètres"><svg viewBox="0 0 24 24"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.6 7.6 0 0 0-1.7-1L15 3.3h-4l-.3 2.6a7.6 7.6 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.6 7.6 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7.6 7.6 0 0 0 1.7-1l2.5 1 2-3.5ZM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z" transform="translate(-1 0)"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <aside class="side">
+    <div class="filters" id="filters"></div>
+    <label class="search">
+      <svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5"/><path d="M15 15l6 6"/></svg>
+      <input id="q" type="search" placeholder="Rechercher..." autocomplete="off">
+    </label>
+  </aside>
+  <section class="grid-wrap"><div class="grid" id="grid"></div></section>
+  <section class="detail-wrap" id="detail"></section>
+</main>
+
+<!-- Barre de test : retour au menu + états à tester. À retirer pour l'intégration au jeu. -->
+<div class="ui-dev" id="ui-dev">
+  <a class="ui-dev-back" href="../../index.html">← Retour au menu</a>
+  <details><summary>Tester</summary><div id="ui-tests"></div></details>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

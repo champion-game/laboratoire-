@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="512" viewBox="0 0 540 512">
+<rect width="540" height="512" fill="#2a231c"/>
+<path d="M0 0L540 512M540 0L0 512" stroke="#c99a3b" stroke-opacity=".25" stroke-width="2"/>
+<rect x="4" y="4" width="532" height="504" fill="none" stroke="#c99a3b" stroke-width="4" stroke-dasharray="16 10"/>
+<g font-family="sans-serif" text-anchor="middle" fill="#e6dcc6">
+<text x="270.0" y="220.0" font-size="36" font-weight="bold">PLACEHOLDER</text>
+<text x="270.0" y="270.4" font-size="28.8">tm-0</text>
+<text x="270.0" y="313.6" font-size="25.2" fill="#9a8f7a">540 × 512</text>
+</g></svg>
