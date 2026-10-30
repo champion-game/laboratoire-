@@ -3,17 +3,17 @@
   "assets": {
     "decor-jour": {
       "type": "fond",
-      "file": "assets/fonds/decor-jour.webp",
+      "file": "assets/extraits/decor-jour.webp",
       "placeholder": null
     },
     "decor-nuit": {
       "type": "fond",
-      "file": "assets/fonds/decor-nuit.webp",
+      "file": "assets/extraits/decor-nuit.webp",
       "placeholder": null
     },
     "decor-nuit-rouge": {
       "type": "fond",
-      "file": "assets/fonds/decor-nuit-rouge.webp",
+      "file": "assets/extraits/decor-nuit-rouge.webp",
       "placeholder": null
     },
     "plateau-jour": {
@@ -33,17 +33,17 @@
     },
     "bandeau-jour": {
       "type": "illustration",
-      "file": "assets/panneaux/bandeau-jour.webp",
+      "file": "assets/extraits/bandeau-jour.webp",
       "placeholder": null
     },
     "bandeau-nuit": {
       "type": "illustration",
-      "file": "assets/panneaux/bandeau-nuit.webp",
+      "file": "assets/extraits/bandeau-nuit.webp",
       "placeholder": null
     },
     "bandeau-nuit-rouge": {
       "type": "illustration",
-      "file": "assets/panneaux/bandeau-nuit-rouge.webp",
+      "file": "assets/extraits/bandeau-nuit-rouge.webp",
       "placeholder": null
     },
     "panneau-papier": {
@@ -60,12 +60,12 @@
     },
     "illus-abri": {
       "type": "illustration",
-      "file": "assets/panneaux/illus-abri.png",
+      "file": "assets/extraits/illus-abri.png",
       "placeholder": null
     },
     "illus-horde": {
       "type": "illustration",
-      "file": "assets/panneaux/illus-horde.png",
+      "file": "assets/extraits/illus-horde.png",
       "placeholder": null
     },
     "dos-carte": {
@@ -80,37 +80,37 @@
     },
     "liste-barricade": {
       "type": "icone",
-      "file": "assets/icones/liste-barricade.png",
+      "file": "assets/extraits/liste-barricade.png",
       "placeholder": null
     },
     "liste-cloture": {
       "type": "icone",
-      "file": "assets/icones/liste-cloture.png",
+      "file": "assets/extraits/liste-cloture.png",
       "placeholder": null
     },
     "liste-epave": {
       "type": "icone",
-      "file": "assets/icones/liste-epave.png",
+      "file": "assets/extraits/liste-epave.png",
       "placeholder": null
     },
     "liste-projecteur": {
       "type": "icone",
-      "file": "assets/icones/liste-projecteur.png",
+      "file": "assets/extraits/liste-projecteur.png",
       "placeholder": null
     },
     "liste-lance-flammes": {
       "type": "icone",
-      "file": "assets/icones/liste-lance-flammes.png",
+      "file": "assets/extraits/liste-lance-flammes.png",
       "placeholder": null
     },
     "liste-tireur": {
       "type": "icone",
-      "file": "assets/icones/liste-tireur.png",
+      "file": "assets/extraits/liste-tireur.png",
       "placeholder": null
     },
     "liste-tourelle": {
       "type": "icone",
-      "file": "assets/icones/liste-tourelle.png",
+      "file": "assets/extraits/liste-tourelle.png",
       "placeholder": null
     },
     "bouton-ligne": {
@@ -158,7 +158,7 @@
     },
     "icone-son-coupe": {
       "type": "icone",
-      "file": "assets/icones/son-coupe.png",
+      "file": "assets/extraits/son-coupe.png",
       "placeholder": null
     },
     "icone-musique": {
@@ -168,7 +168,7 @@
     },
     "icone-musique-coupee": {
       "type": "icone",
-      "file": "assets/icones/musique-coupee.png",
+      "file": "assets/extraits/musique-coupee.png",
       "placeholder": null
     },
     "icone-plein-ecran": {
