@@ -8,7 +8,9 @@ const $ = s => document.querySelector(s);
 const stage = $('#stage');
 // Grille de la cour : 11 × 9 cases sur la zone jouable de la cour (602 × 506 px).
 // L'image de la cour est étirée sur toute la zone centrale ; sa grille peinte (9 × 9) ne correspond pas aux cases.
-const COLS = 11, ROWS = 9, CW = 602.2 / COLS, CH = 506.3 / ROWS;
+const COLS = 11, ROWS = 9;
+// Positions et tailles en % de la zone jouable : tout suit quand la cour s'agrandit avec l'écran.
+const PX = x => `${x / COLS * 100}%`, PY = y => `${y / ROWS * 100}%`;
 
 /* ================= ICÔNES (rendu de secours) ================= */
 // viewBox 0 0 48 48, trait = currentColor
@@ -129,7 +131,7 @@ function fillIcons(root = document){
   root.querySelectorAll('.ico[data-icon]').forEach(el => { el.innerHTML = icon(UI_ICONS, el.dataset.icon); });
 }
 const pct = v => `${Math.max(0, Math.min(1, v)) * 100}%`;
-const at = (el, x, y) => { el.style.left = `${x * CW}px`; el.style.top = `${y * CH}px`; };
+const at = (el, x, y) => { el.style.left = PX(x); el.style.top = PY(y); };
 
 function renderHud(){
   stage.dataset.phase = S.phase;
@@ -173,15 +175,15 @@ function renderPlateau(){
   $('#decals').innerHTML = '';
   for (const [k, t] of S.taches.entries()){
     const d = document.createElement('div'); d.className = 'decal'; d.dataset.asset = 'decal-sang';
-    const s = (t.s || 1) * CW; Object.assign(d.style, { width:`${s}px`, height:`${s}px`, marginLeft:`${-s/2}px`, marginTop:`${-s/2}px` });
+    const s = t.s || 1; Object.assign(d.style, { width:PX(s), height:PY(s), transform:'translate(-50%,-50%)' });
     d.innerHTML = `<span class="fx">${SANG_SVG(k * 31 + 7)}</span>`; at(d, t.x, t.y); $('#decals').append(d);
   }
-  $('#lampes').innerHTML = S.lampes.map(l => `<i style="left:${l.x * CW}px;top:${l.y * CH}px"></i>`).join('');
+  $('#lampes').innerHTML = S.lampes.map(l => `<i style="left:${PX(l.x)};top:${PY(l.y)}"></i>`).join('');
   const pieces = $('#pieces'); pieces.innerHTML = '';
   for (const o of S.obstacles){
     const el = document.createElement('div');
     el.className = `piece obstacle ${o.type}`; el.dataset.asset = `obstacle-${o.type}`;
-    at(el, o.x, o.y); el.style.width = `${o.w * CW}px`; el.style.height = `${o.h * CH}px`;
+    at(el, o.x, o.y); el.style.width = PX(o.w); el.style.height = PY(o.h);
     if (o.type === 'epave') el.innerHTML = `<span class="fx">${EPAVE_SVG}</span>`;
     if (o.type === 'pose') { el.classList.add('pose-carte'); el.innerHTML = `<i class="ico">${icon(LIST_ICONS, o.carte)}</i>`; }
     pieces.append(el);
@@ -268,7 +270,13 @@ document.querySelector('[data-action=plein-ecran]').addEventListener('click', ()
 document.querySelector('[data-action=stats]').addEventListener('click', () => emit('menu', { action:'stats' }));
 
 /* ================= MISE À L'ÉCHELLE ================= */
-function fit(){ stage.style.setProperty('--k', Math.min(innerWidth / 1536, innerHeight / 1024)); }
+// Échelle pour que 1536 × 1024 tienne, puis la scène s'élargit (ou s'allonge) jusqu'aux bords de l'écran.
+function fit(){
+  const k = Math.min(innerWidth / 1536, innerHeight / 1024);
+  stage.style.setProperty('--k', k);
+  stage.style.setProperty('--W', `${innerWidth / k}px`);
+  stage.style.setProperty('--H', `${innerHeight / k}px`);
+}
 addEventListener('resize', fit); fit();
 
 /* ================= VISUELS (manifest.json) =================
