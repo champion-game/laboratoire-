@@ -210,18 +210,20 @@ button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .ico svg .s{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
 /* ================= PLATEAU ================= */
-.plateau{position:absolute;left:336px;top:14px;width:880px;height:735px}
+/* Boîte de l'image de la cour (1245 × 1263 réduite à 725 × 735), centrée au-dessus du bac. */
+.plateau{position:absolute;left:414px;top:14px;width:725px;height:735px}
+.plateau-voile{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s}
 .enclos{position:absolute;inset:0;background:var(--bois),linear-gradient(#4a3420,#2e2014)}
 .palissade{position:absolute;background:var(--bois),repeating-linear-gradient(90deg,#7a5532 0 26px,#5b3d22 26px 28px,#8a6440 28px 52px,#4a311b 52px 54px);box-shadow:0 6px 12px #0009}
-.palissade.haut{left:20px;right:20px;top:18px;height:52px;border-bottom:6px solid #3a2614;clip-path:polygon(0 18%,3% 0,6% 18%,9% 4%,12% 18%,15% 2%,18% 18%,21% 0,24% 18%,27% 4%,30% 18%,33% 0,36% 18%,64% 18%,67% 2%,70% 18%,73% 0,76% 18%,79% 4%,82% 18%,85% 0,88% 18%,91% 3%,94% 18%,97% 0,100% 18%,100% 100%,0 100%)}
-.palissade.gauche,.palissade.droite{top:30px;bottom:6px;width:42px;background:var(--bois),repeating-linear-gradient(0deg,#7a5532 0 26px,#5b3d22 26px 28px,#8a6440 28px 52px,#4a311b 52px 54px)}
+.palissade.haut{left:20px;right:20px;top:18px;height:76px;border-bottom:6px solid #3a2614;clip-path:polygon(0 18%,3% 0,6% 18%,9% 4%,12% 18%,15% 2%,18% 18%,21% 0,24% 18%,27% 4%,30% 18%,33% 0,36% 18%,64% 18%,67% 2%,70% 18%,73% 0,76% 18%,79% 4%,82% 18%,85% 0,88% 18%,91% 3%,94% 18%,97% 0,100% 18%,100% 100%,0 100%)}
+.palissade.gauche,.palissade.droite{top:30px;bottom:6px;width:110px;background:var(--bois),repeating-linear-gradient(0deg,#7a5532 0 26px,#5b3d22 26px 28px,#8a6440 28px 52px,#4a311b 52px 54px)}
 .palissade.gauche{left:4px;border-right:6px solid #3a2614}
 .palissade.droite{right:4px;border-left:6px solid #3a2614}
-.portail{position:absolute;left:330px;top:6px;width:150px;height:62px;background:repeating-linear-gradient(90deg,#2c2a28 0 4px,transparent 4px 18px),linear-gradient(#6b6a66,#3d3b38);border:4px solid #5a3a20;clip-path:polygon(0 15%,100% 15%,100% 100%,0 100%)}
-.sol{position:absolute;left:42px;top:66px;width:800px;height:640px;overflow:hidden;box-shadow:inset 0 0 30px #000a;border-radius:2px}
+.portail{position:absolute;left:288px;top:6px;width:150px;height:62px;background:repeating-linear-gradient(90deg,#2c2a28 0 4px,transparent 4px 18px),linear-gradient(#6b6a66,#3d3b38);border:4px solid #5a3a20;clip-path:polygon(0 15%,100% 15%,100% 100%,0 100%)}
+.sol{position:absolute;left:115.2px;top:93.7px;width:495.8px;height:506.3px;overflow:hidden;box-shadow:inset 0 0 30px #000a;border-radius:2px}
 .dalles{position:absolute;inset:0;background:
-  repeating-linear-gradient(90deg,#00000055 0 2px,transparent 2px 80px),
-  repeating-linear-gradient(0deg,#00000055 0 2px,transparent 2px 80px),
+  repeating-linear-gradient(90deg,#00000055 0 2px,transparent 2px 55.09px),
+  repeating-linear-gradient(0deg,#00000055 0 2px,transparent 2px 56.26px),
   var(--beton),
   radial-gradient(ellipse at 45% 40%,#bdb6a3,#9a9381 70%,#7d776a)}
 .ombres{position:absolute;inset:0;pointer-events:none;background:
@@ -232,7 +234,7 @@ button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 [data-phase=nuit-rouge] .nuit-voile{opacity:1;background:radial-gradient(circle at 48% 54%,#ff7a4a40,transparent 22%),linear-gradient(#5a0c0ab8,#3a0807c0);mix-blend-mode:multiply}
 [data-phase=nuit] .ombres,[data-phase=nuit-rouge] .ombres{opacity:.4}
 .lampes{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s}
-.lampes i{position:absolute;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;background:radial-gradient(circle,#ffb04a90,#ff8a2a30 35%,transparent 70%);mix-blend-mode:screen}
+.lampes i{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:radial-gradient(circle,#ffb04a90,#ff8a2a30 35%,transparent 70%);mix-blend-mode:screen}
 [data-phase=nuit] .lampes,[data-phase=nuit-rouge] .lampes{opacity:1}
 [data-phase=nuit-rouge] .lampes i{background:radial-gradient(circle,#ff3a2a90,#ff2a1a30 35%,transparent 70%)}
 .plateau.asset-on .sol{box-shadow:none}
@@ -244,7 +246,7 @@ button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 [data-phase=nuit] .decal svg{fill:#4a0a08}
 
 /* Cases cliquables (pose d'une carte) */
-.cases{display:grid;grid-template-columns:repeat(10,80px);grid-template-rows:repeat(8,80px);z-index:5}
+.cases{display:grid;grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);z-index:5}
 .case{border:0;background:transparent;transition:background-color .1s}
 .stage.pose .case:hover{background:#ffe08a40;box-shadow:inset 0 0 0 2px #ffd25a}
 .stage:not(.pose) .cases{pointer-events:none}
@@ -252,7 +254,7 @@ button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 /* Pièces : unités, obstacles */
 .piece{position:absolute;pointer-events:none}
 .piece > svg,.piece > .corps{position:absolute;inset:0;width:100%;height:100%}
-.unite{width:80px;height:80px;margin:-40px 0 0 -40px;z-index:3}
+.unite{width:80px;height:80px;margin:-40px 0 0 -40px;z-index:3;transform:scale(.7)}
 .unite .anneau{position:absolute;left:14px;top:22px;width:52px;height:52px;border-radius:50%;border:3px solid #f2b51e;box-shadow:0 0 8px #f2b51e80;opacity:0}
 .unite.survivant .anneau{opacity:1}
 .unite .pv{position:absolute;left:18px;top:-6px;width:44px;height:8px;background:#1a1414;border:1px solid #000;box-shadow:0 1px 2px #000}
@@ -343,7 +345,13 @@ button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 
 .obstacle.asset-on{box-shadow:none!important;border:0!important;border-radius:0}
 .obstacle.asset-on::before,.obstacle.asset-on::after{display:none}
-.plateau.asset-on .nuit-voile,.plateau.asset-on .lampes{display:none}
+/* Cour livrée : une seule image pour les 3 ambiances, teintée par le code la nuit (uniquement sur ses pixels). */
+.plateau.asset-on{background-size:100% 100%!important}
+.plateau.asset-on .sol{overflow:visible}
+.plateau.asset-on .nuit-voile{display:none}
+.plateau.asset-on > .plateau-voile{-webkit-mask:var(--asset) center/100% 100% no-repeat;mask:var(--asset) center/100% 100% no-repeat}
+[data-phase=nuit] .plateau.asset-on > .plateau-voile{opacity:1;background:radial-gradient(circle at 50% 50%,#ffa84a28,transparent 30%),#0a1230b8;mix-blend-mode:multiply}
+[data-phase=nuit-rouge] .plateau.asset-on > .plateau-voile{opacity:1;background:radial-gradient(circle at 50% 50%,#ff7a4a30,transparent 30%),#5a0c0ab0;mix-blend-mode:multiply}
 .decal.asset-on svg{display:none}
 
 /* ================= BARRE DE TEST (hors jeu) ================= */
@@ -364,3 +372,12 @@ button:focus-visible{outline:3px solid var(--or);outline-offset:2px}
 .dos-carte.asset-on,.carte .cadre.asset-on{border:0;box-shadow:none}
 .vagues{max-width:160px}
 .vagues i{flex:0 1 28px;min-width:12px}
+
+/* ================= CARTES : modèle fourni (2:3) ================= */
+.carte{width:146px;height:219px}
+.carte .cadre{border-radius:9px}
+.carte .cadre.asset-on{filter:drop-shadow(0 8px 10px #000b)}
+.carte:has(.cadre.asset-on) .art{display:none}
+/* Le nom s'écrit en haut du grand cadre de texte de la carte modèle (y 60 → 94 %). */
+.carte:has(.cadre.asset-on) .nom{left:9%;right:9%;bottom:auto;top:64%;height:auto;padding:4px 0;background:none;border:0;clip-path:none;transform:none;font-size:17px;color:var(--encre);text-shadow:0 1px 0 #fff6}
+.carte:has(.cadre.asset-on) .cout{left:-6px;top:-8px}

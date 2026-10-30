@@ -18,17 +18,17 @@
     },
     "plateau-jour": {
       "type": "illustration",
-      "file": "assets/plateau/plateau-jour.webp",
+      "file": "assets/plateau/cour.webp",
       "placeholder": null
     },
     "plateau-nuit": {
       "type": "illustration",
-      "file": "assets/plateau/plateau-nuit.webp",
+      "file": "assets/plateau/cour.webp",
       "placeholder": null
     },
     "plateau-nuit-rouge": {
       "type": "illustration",
-      "file": "assets/plateau/plateau-nuit-rouge.webp",
+      "file": "assets/plateau/cour.webp",
       "placeholder": null
     },
     "bandeau-jour": {
@@ -73,59 +73,9 @@
       "file": "assets/cartes/dos-carte.webp",
       "placeholder": null
     },
-    "cadre-carte": {
+    "carte-modele": {
       "type": "illustration",
-      "file": "assets/cartes/cadre-carte.png",
-      "placeholder": null
-    },
-    "carte-barricade": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-barricade.webp",
-      "placeholder": null
-    },
-    "carte-mitrailleuse": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-mitrailleuse.webp",
-      "placeholder": null
-    },
-    "carte-molotov": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-molotov.webp",
-      "placeholder": null
-    },
-    "carte-guetteur": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-guetteur.webp",
-      "placeholder": null
-    },
-    "carte-tireur": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-tireur.webp",
-      "placeholder": null
-    },
-    "carte-cloture": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-cloture.webp",
-      "placeholder": null
-    },
-    "carte-epave": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-epave.webp",
-      "placeholder": null
-    },
-    "carte-projecteur": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-projecteur.webp",
-      "placeholder": null
-    },
-    "carte-lance-flammes": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-lance-flammes.webp",
-      "placeholder": null
-    },
-    "carte-tourelle": {
-      "type": "illustration",
-      "file": "assets/cartes/carte-tourelle.webp",
+      "file": "assets/cartes/carte-modele.webp",
       "placeholder": null
     },
     "liste-barricade": {
@@ -249,36 +199,6 @@
     "icone-defausse": {
       "type": "icone",
       "file": "assets/icones/defausse.png",
-      "placeholder": null
-    },
-    "unite-survivant": {
-      "type": "illustration",
-      "file": "assets/pieces/survivant.png",
-      "placeholder": null
-    },
-    "unite-zombie": {
-      "type": "illustration",
-      "file": "assets/pieces/zombie.png",
-      "placeholder": null
-    },
-    "obstacle-bloc": {
-      "type": "illustration",
-      "file": "assets/pieces/bloc.png",
-      "placeholder": null
-    },
-    "obstacle-caisse": {
-      "type": "illustration",
-      "file": "assets/pieces/caisses.png",
-      "placeholder": null
-    },
-    "obstacle-epave": {
-      "type": "illustration",
-      "file": "assets/pieces/epave.png",
-      "placeholder": null
-    },
-    "decal-sang": {
-      "type": "illustration",
-      "file": "assets/pieces/sang.png",
       "placeholder": null
     }
   }

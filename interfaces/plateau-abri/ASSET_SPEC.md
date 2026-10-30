@@ -25,6 +25,10 @@ Règles communes :
 
 ## B. Plateau (cour de l'abri, vue de dessus)
 
+> **Décision du propriétaire** : la cour est l'image fournie `assets/plateau/cour.webp` (1245 × 1263, fond transparent,
+> grille de 9 × 9 cases). Elle sert aux 3 ambiances : le code l'assombrit la nuit et la teinte en rouge pour la nuit rouge.
+> Les specs ci-dessous (10 × 8 cases) ne s'appliquent plus.
+
 Zone affichée : 880 × 735 à l'écran → fichier **1760 × 1470**. Le **sol jouable** occupe exactement le rectangle
 x = 84, y = 132, 1600 × 1280 px du fichier : **10 × 8 dalles de 160 px**, alignées sur ce rectangle.
 Autour : palissade en bois (haut, gauche, droite) avec portail métallique au milieu en haut, tonneaux rouillés,
@@ -33,9 +37,9 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 4 | `plateau-jour` | `assets/plateau/plateau-jour.webp` | illustration | 1760 × 1470 | non | Plein soleil, grandes ombres diagonales des poteaux sur les dalles. | proposé |
-| 5 | `plateau-nuit` | `assets/plateau/plateau-nuit.webp` | illustration | 1760 × 1470 | non | Nuit bleue, lampes allumées le long de la palissade avec halos orangés, sol sombre. | proposé |
-| 6 | `plateau-nuit-rouge` | `assets/plateau/plateau-nuit-rouge.webp` | illustration | 1760 × 1470 | non | Nuit rouge, lampes rouges, sol teinté de rouge sombre. | proposé |
+| 4 | `plateau-jour` | `assets/plateau/cour.webp` | illustration | 1245 × 1263 | oui | Image fournie par le propriétaire, utilisée pour les 3 ambiances. | validé |
+| 5 | `plateau-nuit` | `assets/plateau/plateau-nuit.webp` | illustration | 1760 × 1470 | non | Nuit bleue, lampes allumées le long de la palissade avec halos orangés, sol sombre. | refusé |
+| 6 | `plateau-nuit-rouge` | `assets/plateau/plateau-nuit-rouge.webp` | illustration | 1760 × 1470 | non | Nuit rouge, lampes rouges, sol teinté de rouge sombre. | refusé |
 
 ## C. Panneaux de l'interface
 
@@ -51,20 +55,25 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 ## D. Cartes
 
+> **Décision du propriétaire** : toutes les cartes utilisent la carte fournie `assets/cartes/carte-modele.webp`
+> (1024 × 1536, ratio 2:3). Le code écrit le nom dans le grand cadre de texte et pose la pastille de coût.
+> Le cadre et les illustrations séparés ne sont plus nécessaires.
+
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
 | 14 | `dos-carte` | `assets/cartes/dos-carte.webp` | illustration | 224 × 300 | non | Dos de carte : fond rouge très sombre, symbole biohazard rouge lumineux, cadre crème fin. | proposé |
-| 15 | `cadre-carte` | `assets/cartes/cadre-carte.png` | illustration | 316 × 424 | oui (fenêtre) | Cadre de carte : papier crème vieilli, bord sombre, **fenêtre transparente** pour l'illustration (x 20→296, y 24→304) et bandeau du nom en bas (**vide**). Pas de pastille de coût (le code la dessine). | proposé |
-| 16 | `carte-barricade` | `assets/cartes/carte-barricade.webp` | illustration | 276 × 280 | non | Planches clouées en croix, encre noire sur papier, éclaboussures grises. | proposé |
-| 17 | `carte-mitrailleuse` | `assets/cartes/carte-mitrailleuse.webp` | illustration | 276 × 280 | non | Mitrailleuse sur trépied avec bande de munitions. | proposé |
-| 18 | `carte-molotov` | `assets/cartes/carte-molotov.webp` | illustration | 276 × 280 | non | Main tenant un cocktail Molotov enflammé, grosse éclaboussure rouge. | proposé |
-| 19 | `carte-guetteur` | `assets/cartes/carte-guetteur.webp` | illustration | 276 × 280 | non | Survivant encapuchonné aux jumelles. | proposé |
-| 20 | `carte-tireur` | `assets/cartes/carte-tireur.webp` | illustration | 276 × 280 | non | Soldat accroupi qui vise au fusil, éclaboussure rouge. | proposé |
-| 21 | `carte-cloture` | `assets/cartes/carte-cloture.webp` | illustration | 276 × 280 | non | Clôture de piquets et barbelés (pas dans la maquette). | proposé |
-| 22 | `carte-epave` | `assets/cartes/carte-epave.webp` | illustration | 276 × 280 | non | Carcasse de voiture rouillée (pas dans la maquette). | proposé |
-| 23 | `carte-projecteur` | `assets/cartes/carte-projecteur.webp` | illustration | 276 × 280 | non | Projecteur sur pied (pas dans la maquette). | proposé |
-| 24 | `carte-lance-flammes` | `assets/cartes/carte-lance-flammes.webp` | illustration | 276 × 280 | non | Lance-flammes et réservoir (pas dans la maquette). | proposé |
-| 25 | `carte-tourelle` | `assets/cartes/carte-tourelle.webp` | illustration | 276 × 280 | non | Tourelle automatique sur trépied (pas dans la maquette). | proposé |
+| 15a | `carte-modele` | `assets/cartes/carte-modele.webp` | illustration | 1024 × 1536 | non | Carte complète fournie par le propriétaire (Traqueur), utilisée pour toutes les cartes. | validé |
+| 15 | `cadre-carte` | `assets/cartes/cadre-carte.png` | illustration | 316 × 424 | oui (fenêtre) | Cadre de carte : papier crème vieilli, bord sombre, **fenêtre transparente** pour l'illustration (x 20→296, y 24→304) et bandeau du nom en bas (**vide**). Pas de pastille de coût (le code la dessine). | refusé |
+| 16 | `carte-barricade` | `assets/cartes/carte-barricade.webp` | illustration | 276 × 280 | non | Planches clouées en croix, encre noire sur papier, éclaboussures grises. | refusé |
+| 17 | `carte-mitrailleuse` | `assets/cartes/carte-mitrailleuse.webp` | illustration | 276 × 280 | non | Mitrailleuse sur trépied avec bande de munitions. | refusé |
+| 18 | `carte-molotov` | `assets/cartes/carte-molotov.webp` | illustration | 276 × 280 | non | Main tenant un cocktail Molotov enflammé, grosse éclaboussure rouge. | refusé |
+| 19 | `carte-guetteur` | `assets/cartes/carte-guetteur.webp` | illustration | 276 × 280 | non | Survivant encapuchonné aux jumelles. | refusé |
+| 20 | `carte-tireur` | `assets/cartes/carte-tireur.webp` | illustration | 276 × 280 | non | Soldat accroupi qui vise au fusil, éclaboussure rouge. | refusé |
+| 21 | `carte-cloture` | `assets/cartes/carte-cloture.webp` | illustration | 276 × 280 | non | Clôture de piquets et barbelés (pas dans la maquette). | refusé |
+| 22 | `carte-epave` | `assets/cartes/carte-epave.webp` | illustration | 276 × 280 | non | Carcasse de voiture rouillée (pas dans la maquette). | refusé |
+| 23 | `carte-projecteur` | `assets/cartes/carte-projecteur.webp` | illustration | 276 × 280 | non | Projecteur sur pied (pas dans la maquette). | refusé |
+| 24 | `carte-lance-flammes` | `assets/cartes/carte-lance-flammes.webp` | illustration | 276 × 280 | non | Lance-flammes et réservoir (pas dans la maquette). | refusé |
+| 25 | `carte-tourelle` | `assets/cartes/carte-tourelle.webp` | illustration | 276 × 280 | non | Tourelle automatique sur trépied (pas dans la maquette). | refusé |
 
 ## E. Liste « Cartes disponibles »
 
@@ -104,11 +113,13 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 ## H. Pièces du plateau (vue de dessus, fond transparent)
 
+> **Décision du propriétaire** : pas besoin. Les unités restent dessinées par le code.
+
 | # | Clé | Fichier | Type | Taille | Description | Statut |
 |---|---|---|---|---|---|---|
-| 47 | `unite-survivant` | `assets/pieces/survivant.png` | illustration | 160 × 160 | Survivant armé d'un fusil, casque, vu de dessus, **orienté vers la droite** (le code le fait pivoter), centré. Sans anneau ni barre de vie. | proposé |
-| 48 | `unite-zombie` | `assets/pieces/zombie.png` | illustration | 160 × 160 | Zombie vu de dessus, bras tendus **vers la droite**, vêtements tachés de sang, centré. | proposé |
-| 49 | `obstacle-bloc` | `assets/pieces/bloc.png` | illustration | 96 × 96 | Bloc de béton blanc cassé vu de dessus avec léger relief et ombre portée courte. Le code les empile. | proposé |
-| 50 | `obstacle-caisse` | `assets/pieces/caisses.png` | illustration | 304 × 208 | Groupe de caisses en bois et sacs de sable (centre de la cour). | proposé |
-| 51 | `obstacle-epave` | `assets/pieces/epave.png` | illustration | 320 × 304 | Voiture rouillée vue de dessus, posée en diagonale (≈ −30°). | proposé |
-| 52 | `decal-sang` | `assets/pieces/sang.png` | illustration | 160 × 160 | Flaque et éclaboussures de sang sombre (#8a120c), semi-transparentes. | proposé |
+| 47 | `unite-survivant` | `assets/pieces/survivant.png` | illustration | 160 × 160 | Survivant armé d'un fusil, casque, vu de dessus, **orienté vers la droite** (le code le fait pivoter), centré. Sans anneau ni barre de vie. | refusé |
+| 48 | `unite-zombie` | `assets/pieces/zombie.png` | illustration | 160 × 160 | Zombie vu de dessus, bras tendus **vers la droite**, vêtements tachés de sang, centré. | refusé |
+| 49 | `obstacle-bloc` | `assets/pieces/bloc.png` | illustration | 96 × 96 | Bloc de béton blanc cassé vu de dessus avec léger relief et ombre portée courte. Le code les empile. | refusé |
+| 50 | `obstacle-caisse` | `assets/pieces/caisses.png` | illustration | 304 × 208 | Groupe de caisses en bois et sacs de sable (centre de la cour). | refusé |
+| 51 | `obstacle-epave` | `assets/pieces/epave.png` | illustration | 320 × 304 | Voiture rouillée vue de dessus, posée en diagonale (≈ −30°). | refusé |
+| 52 | `decal-sang` | `assets/pieces/sang.png` | illustration | 160 × 160 | Flaque et éclaboussures de sang sombre (#8a120c), semi-transparentes. | refusé |
