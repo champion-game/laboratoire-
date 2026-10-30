@@ -1,0 +1,61 @@
+{
+  "_aide": "clé → fichier. Si « file » est absent, l'interface affiche « placeholder » ; placeholder null = rendu de secours dessiné par le code. Ne pas renommer les clés.",
+  "assets": {
+    "carte-0": {
+      "file": "assets/extraits/carte-0.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-1": {
+      "file": "assets/extraits/carte-1.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-2": {
+      "file": "assets/extraits/carte-2.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-3": {
+      "file": "assets/extraits/carte-3.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-4": {
+      "file": "assets/extraits/carte-4.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-5": {
+      "file": "assets/extraits/carte-5.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-6": {
+      "file": "assets/extraits/carte-6.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-7": {
+      "file": "assets/extraits/carte-7.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-8": {
+      "file": "assets/extraits/carte-8.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "carte-0-grand": {
+      "file": "assets/extraits/carte-0-grand.webp",
+      "placeholder": "assets/placeholders/carte.svg"
+    },
+    "livre": {
+      "file": "assets/book-texture.png",
+      "placeholder": null
+    },
+    "parchemin": {
+      "file": "assets/parchment.svg",
+      "placeholder": null
+    },
+    "cuir": {
+      "file": "assets/leather.svg",
+      "placeholder": null
+    },
+    "bois": {
+      "file": "assets/wood.svg",
+      "placeholder": null
+    }
+  }
+}
