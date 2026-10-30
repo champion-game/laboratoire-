@@ -3,9 +3,10 @@
 ## Rôles
 
 - **Claude Code (toi)** : tout le **code** des interfaces (HTML, CSS, JS, manifest, docs).
-  Tu ne crées **aucune image finale**, à l'exception des images de substitution dans
-  `interfaces/<nom>/assets/placeholders/`.
-- **Codex** (voir `AGENTS.md`) : tous les **visuels** (textures, fonds, icônes, cadres, illustrations),
+  Tu ne dessines **aucune image neuve**. Exceptions : les images de substitution dans
+  `interfaces/<nom>/assets/placeholders/`, et les **visuels extraits d'une image modèle fournie par le
+  propriétaire** (voir « Extraire des visuels d'une image modèle »).
+- **Codex** (voir `AGENTS.md`) : la création des **visuels neufs** (textures, fonds, icônes, cadres, illustrations),
   dans `interfaces/<nom>/assets/` uniquement.
 - Le propriétaire travaille en ligne sur GitHub, sans environnement local ni PowerShell.
 
@@ -58,17 +59,19 @@ Modifier, casser ou supprimer une interface ne doit avoir **aucun** impact sur l
   API `setData` et événements, puis ajoute son lien dans `index.html`.
 - **Vérification** après chaque modification : l'interface s'ouvre seule sans erreur, ses boutons de test
   fonctionnent et le menu fonctionne toujours.
-- Ne modifie jamais `interfaces/*/assets/` en dehors de `placeholders/` et `fonts/` : c'est le domaine de Codex.
+- Dans `interfaces/*/assets/`, tu ne touches qu'à `placeholders/`, `fonts/` et `extraits/` (visuels tirés de l'image modèle).
+  Le reste est le domaine de Codex ou des fichiers fournis par le propriétaire.
 
 ## Créer une interface à partir d'une image
 
 Le propriétaire fournit une image (maquette). Le processus est toujours le même :
 
 1. **Ranger la maquette** dans `interfaces/<nom>/reference/maquette.<ext>`. Elle sert de modèle pour toi et
-   pour Codex. Le code ne la charge **jamais** : ni en fond, ni en sprite, ni découpée.
+   pour Codex. Le code ne la charge **jamais** directement (ni en fond, ni en sprite). Les morceaux utiles
+   en sont extraits en fichiers séparés (voir plus bas).
 2. **Construire l'interface à l'identique** (disposition, proportions, couleurs, typographie, états)
    **avec les moyens du code uniquement** : CSS (dégradés, ombres, bordures, `clip-path`), SVG et filtres SVG
-   (bruit, grain, rouille), polices libres copiées dans `assets/fonts/`. Tu ne crées et ne découpes aucune image.
+   (bruit, grain, rouille), polices libres copiées dans `assets/fonts/`, et visuels extraits de l'image modèle.
    Tous les éléments sont de vrais éléments HTML (boutons cliquables, onglets, listes), jamais des zones
    invisibles posées sur une image.
 3. **Dresser la liste des visuels** qui rendraient l'interface fidèle à la maquette. Ajoute chaque visuel
@@ -86,6 +89,22 @@ Le propriétaire fournit une image (maquette). Le processus est toujours le mêm
 Cycle des statuts dans `ASSET_SPEC.md` :
 `proposé` (Claude) → `à faire` (validé par le propriétaire) → `livré` (Codex) → `validé` (propriétaire).
 Une ligne peut aussi être `refusé`.
+
+## Extraire des visuels d'une image modèle
+
+Validé par le propriétaire : tu peux **découper et traiter** l'image modèle qu'il fournit pour en tirer des visuels exploitables.
+
+- **Ce que tu fais** : découpe au pixel près, textures répétables (bords raccordés), agrandissement ×2 à ×4
+  (Lanczos et légère netteté), états de bouton dérivés (survol, appui, désactivé), détourage quand le fond est uni,
+  masquage du texte peint quand c'est propre.
+- **Où** : `interfaces/<nom>/assets/extraits/`. La source d'origine reste intacte dans `reference/`.
+- **Le script** qui produit les extraits est versionné dans `interfaces/<nom>/reference/extraction.py`, pour pouvoir
+  les régénérer.
+- **Dans `ASSET_SPEC.md`** : chaque visuel extrait a le statut `livré` et la mention « extrait de la maquette ».
+  Le propriétaire le passe à `validé` ou demande à Codex une version redessinée.
+- **Toujours** montrer le résultat au propriétaire (captures avant/après) avant de le mettre en ligne. Garder le rendu CSS en secours.
+- **Limites à signaler** : l'agrandissement n'ajoute pas de détails ; le détourage sur un décor chargé et
+  l'effacement de gros textes peints donnent un résultat moyen ; l'éclairage de la maquette reste dans l'extrait.
 
 ## Git
 
