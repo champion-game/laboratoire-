@@ -33,7 +33,7 @@ Si un fichier manque : `assets/placeholders/carte.svg`.
 
 | Clé | Fichier | Rôle | Si absent | Statut |
 |---|---|---|---|---|
-| `livre` | `assets/book-texture.png` | livre ouvert vierge (cuir, pages, anneaux), 1672 × 941, PNG | couleurs CSS | livré |
+| `livre` | `assets/book-texture.webp` | livre ouvert vierge (cuir, pages, anneaux), 1672 × 941, WebP (210 Ko) converti depuis `book-texture.png` (2,6 Mo, gardé comme source) | pages de parchemin dessinées en CSS | livré |
 | `parchemin` | `assets/parchment.svg` | parchemin procédural (vectoriel) | couleurs CSS | livré |
 | `cuir` | `assets/leather.svg` | cuir sombre procédural (barre latérale, onglets) | couleurs CSS | livré |
 | `bois` | `assets/wood.svg` | planches sombres (fond de la scène) | couleurs CSS | livré |
