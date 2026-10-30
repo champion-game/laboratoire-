@@ -17,6 +17,7 @@ interfaces/<nom>/
   index.html               page autonome de l'interface
   style.css                styles de cette interface uniquement
   script.js                code de cette interface uniquement
+  reference/               maquette(s) fournie(s) par le propriétaire (jamais chargée par le code)
   assets/                  ses visuels à elle (+ fonts/, placeholders/)
   ASSET_SPEC.md            visuels dont elle a besoin (avec statut)
   manifest.json            clé → fichier, avec placeholder si le fichier manque
@@ -50,14 +51,41 @@ Modifier, casser ou supprimer une interface ne doit avoir **aucun** impact sur l
 - Quand tu travailles sur une interface, tu ne modifies **que son dossier** `interfaces/<nom>/`.
   Si une demande t'oblige à toucher un autre dossier (une autre interface, le menu, `AGENTS.md`…),
   **tu demandes d'abord** au propriétaire. Seule exception : l'ajout du `<li>` d'une nouvelle interface dans `index.html`.
-- **Besoin d'un visuel** : ajoute une ligne `à faire` dans l'`ASSET_SPEC.md` de l'interface (clé, fichier, taille,
-  format, transparence, description). Ajoute la clé dans `manifest.json` et prévois un placeholder dans
-  `assets/placeholders/` (ou un rendu de secours dessiné par le code, avec `"placeholder": null`).
+- **Besoin d'un visuel** : ajoute une ligne `proposé` dans l'`ASSET_SPEC.md` de l'interface. Ajoute aussi
+  la clé dans `manifest.json`, avec un placeholder dans `assets/placeholders/` ou un rendu de secours dessiné
+  par le code (`"placeholder": null`). **Ne passe jamais une ligne à `à faire` sans l'accord du propriétaire.**
 - **Nouvelle interface** : crée le dossier complet (les 7 éléments ci-dessus), avec données de démo, panneau Tester,
   API `setData` et événements, puis ajoute son lien dans `index.html`.
 - **Vérification** après chaque modification : l'interface s'ouvre seule sans erreur, ses boutons de test
   fonctionnent et le menu fonctionne toujours.
 - Ne modifie jamais `interfaces/*/assets/` en dehors de `placeholders/` et `fonts/` : c'est le domaine de Codex.
+
+## Créer une interface à partir d'une image
+
+Le propriétaire fournit une image (maquette). Le processus est toujours le même :
+
+1. **Ranger la maquette** dans `interfaces/<nom>/reference/maquette.<ext>`. Elle sert de modèle pour toi et
+   pour Codex. Le code ne la charge **jamais** : ni en fond, ni en sprite, ni découpée.
+2. **Construire l'interface à l'identique** (disposition, proportions, couleurs, typographie, états)
+   **avec les moyens du code uniquement** : CSS (dégradés, ombres, bordures, `clip-path`), SVG et filtres SVG
+   (bruit, grain, rouille), polices libres copiées dans `assets/fonts/`. Tu ne crées et ne découpes aucune image.
+   Tous les éléments sont de vrais éléments HTML (boutons cliquables, onglets, listes), jamais des zones
+   invisibles posées sur une image.
+3. **Dresser la liste des visuels** qui rendraient l'interface fidèle à la maquette. Ajoute chaque visuel
+   dans `ASSET_SPEC.md` au statut **`proposé`**, avec : clé, fichier, type (voir `AGENTS.md`), taille, format,
+   transparence, états, zone de la maquette concernée et description. Branche dès maintenant chaque clé
+   dans `manifest.json` : le rendu CSS/SVG sert de secours, ce qui permet au visuel livré de s'afficher sans toucher au code.
+4. **Faire valider la liste** : présente-la au propriétaire sous forme de liste numérotée et courte, groupée par type.
+   Il peut retirer des éléments (« pas besoin de générer les cartes ») ou en ajouter.
+   Les lignes retirées passent à **`refusé`**, les lignes acceptées à **`à faire`**.
+5. **Préparer la demande à Codex** : donne au propriétaire le prompt exact à copier dans Codex. Il indique
+   l'interface, la maquette à suivre et le rappel : « ne pas découper la maquette, produire de vraies textures exploitables ».
+6. **À la livraison**, vérifie que chaque fichier respecte la spec (taille, transparence, états). S'il manque
+   un raccord dans le code, fais-le. Montre ensuite le résultat au propriétaire, qui passe les lignes à `validé`.
+
+Cycle des statuts dans `ASSET_SPEC.md` :
+`proposé` (Claude) → `à faire` (validé par le propriétaire) → `livré` (Codex) → `validé` (propriétaire).
+Une ligne peut aussi être `refusé`.
 
 ## Git
 
