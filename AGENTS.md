@@ -13,12 +13,14 @@ Le code est fait par Claude Code (voir `CLAUDE.md`).
 - Tout le code : `*.html`, `*.css`, `*.js`, `manifest.json`, `README.md`.
 - Le menu (`index.html` à la racine), `CLAUDE.md`, `AGENTS.md`, `INTEGRATION.md`.
 - `assets/placeholders/` et `assets/fonts/` (gérés par Claude Code).
+- `reference/` : la maquette du propriétaire, à consulter seulement.
 - Renommer ou déplacer un fichier existant.
 
 ## Méthode
 
 1. Travaille sur **une seule interface à la fois**.
-2. Lis son `ASSET_SPEC.md`. Prends uniquement les lignes au statut **`à faire`**.
+2. Lis son `ASSET_SPEC.md`. Prends **uniquement** les lignes au statut **`à faire`**. Les lignes `proposé`
+   n'ont pas encore été validées par le propriétaire, et les lignes `refusé` ne sont jamais à produire.
 3. Pour chaque visuel, respecte exactement ce que dit la spec : **nom de fichier et chemin, taille en pixels,
    format, transparence, contenu et style**. S'il y a une image de référence, aligne-toi dessus.
 4. Enregistre le fichier au chemin indiqué. Le code l'utilisera automatiquement : `manifest.json` pointe déjà dessus.
@@ -26,6 +28,28 @@ Le code est fait par Claude Code (voir `CLAUDE.md`).
 6. Ne copie **jamais** un visuel d'une interface vers une autre, sauf si la spec le demande explicitement.
    Chaque interface a ses propres fichiers.
 7. Si une spec est ambiguë ou impossible à respecter, ne devine pas. Laisse la ligne `à faire` et explique le problème dans ta réponse.
+
+## La maquette : un modèle, pas une source à découper
+
+Quand l'interface a un dossier `reference/`, la maquette qu'il contient montre **à quoi doit ressembler** le résultat.
+
+- **Interdit** de découper, recadrer, détourer ou retoucher la maquette pour en tirer un visuel.
+- Chaque visuel est **redessiné proprement** : même style, mêmes couleurs, même matière. Il doit être exploitable
+  par le code, c'est-à-dire sans texte incrusté (sauf demande), sans ombre ni fond de la maquette, au bon format
+  et avec la bonne transparence.
+
+## Types de visuels exploitables
+
+La colonne « Type » de la spec indique comment le code utilise le visuel :
+
+| Type | Ce qu'il faut livrer |
+|---|---|
+| `texture` | Motif **répétable sans raccord visible** (bords qui se raccordent), carré, opaque sauf indication contraire. |
+| `cadre-9` | Cadre ou panneau extensible : les **coins** sont fixes, les **bords** se répètent et le **centre** est vide ou uni. La spec donne la largeur des bords en px. Fond transparent autour. |
+| `bouton` | **Un fichier par état** : `-normal`, `-survol`, `-appui`, `-desactive` (et `-actif` si demandé), tous de la même taille. Fond transparent et **pas de texte** : le code écrit le libellé. |
+| `icone` | Pictogramme centré, fond transparent, lisible à petite taille, avec une marge de ≈ 10 %. |
+| `illustration` | Image finale (personnage, objet, décor), avec le cadrage et la transparence indiqués par la spec. |
+| `fond` | Image de fond d'écran à la taille indiquée, opaque, sans élément d'interface dessiné dedans. |
 
 ## Direction artistique
 
