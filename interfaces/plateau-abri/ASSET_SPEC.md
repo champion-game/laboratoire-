@@ -33,6 +33,18 @@ Trois éléments du pack, absents de la liste d'origine, sont aussi branchés :
 - cadres de cartes : la carte modèle est utilisée partout.
 - onglets, jauges, compteurs attaque/PV/soin, champ de recherche, `hud_frame`, `right_scenery_red` (330 × 390, trop petit pour un fond).
 
+## Extraits de la maquette (Claude)
+
+Produits par `reference/extraction.py` à partir des 3 maquettes, rangés dans `assets/extraits/` :
+- **fonds** : le paysage de droite de chaque maquette, prolongé à gauche (ville en miroir), en haut (ciel lisse)
+  et en bas (sol uni), puis agrandi ×2. Le cadrage est le même dans les 3 ambiances ;
+- **bandeaux JOUR** : intérieur du panneau, avec le texte et les losanges effacés (le code les redessine), agrandi ×2 ;
+- **silhouettes abri / horde et icônes de liste** : détourées puis agrandies ;
+- **son coupé / musique coupée** : icônes du pack avec une barre rouge.
+
+Limites : l'agrandissement n'ajoute pas de détails, et les fonds ne montrent que ce que la maquette montrait.
+Pour une version plus riche, repasse la ligne à `à faire` : Codex la redessinera.
+
 ## A. Fonds d'écran
 
 **Ils couvrent tout l'écran, sans coupure.** Une seule scène continue peinte d'un bord à l'autre. On la voit à droite de l'interface,
@@ -48,9 +60,9 @@ mais aussi entre les panneaux, dans les coins transparents de la cour et sur les
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 1 | `decor-jour` | `assets/fonds/decor-jour.webp` | fond | 3072 × 2048 | non | Paysage de jour, visible surtout à droite (x > 1210) et sur les bords : ciel bleu avec nuages, désert ocre, montagnes, ville en ruine au loin, tour de guet en bois et palissade au premier plan à droite, buissons. Rien d'interface. | à faire |
-| 2 | `decor-nuit` | `assets/fonds/decor-nuit.webp` | fond | 3072 × 2048 | non | Même paysage la nuit : ciel bleu nuit, pleine lune blanche, ville éclairée au loin, tour avec une lampe jaune. | à faire |
-| 3 | `decor-nuit-rouge` | `assets/fonds/decor-nuit-rouge.webp` | fond | 3072 × 2048 | non | Même paysage sous une lune de sang : ciel rouge sombre, grosse lune rouge, silhouettes noires, lampe rouge sur la tour. | à faire |
+| 1 | `decor-jour` | `assets/extraits/decor-jour.webp` | fond | 3072 × 2048 | non | Paysage de jour, visible surtout à droite (x > 1210) et sur les bords : ciel bleu avec nuages, désert ocre, montagnes, ville en ruine au loin, tour de guet en bois et palissade au premier plan à droite, buissons. Rien d'interface. | livré (extrait de la maquette) |
+| 2 | `decor-nuit` | `assets/extraits/decor-nuit.webp` | fond | 3072 × 2048 | non | Même paysage la nuit : ciel bleu nuit, pleine lune blanche, ville éclairée au loin, tour avec une lampe jaune. | livré (extrait de la maquette) |
+| 3 | `decor-nuit-rouge` | `assets/extraits/decor-nuit-rouge.webp` | fond | 3072 × 2048 | non | Même paysage sous une lune de sang : ciel rouge sombre, grosse lune rouge, silhouettes noires, lampe rouge sur la tour. | livré (extrait de la maquette) |
 
 ## B. Plateau (cour de l'abri, vue de dessus)
 
@@ -75,13 +87,13 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 7 | `bandeau-jour` | `assets/panneaux/bandeau-jour.webp` | illustration | 610 × 336 | non | Fond du panneau « JOUR » : papier crème vieilli, soleil jaune à droite, silhouette noire d'une tour de guet et de clôtures en bas. Zone de gauche (≈ 40 %) et bande du bas (≈ 50 px) **calmes** pour le texte et les losanges. | à faire |
-| 8 | `bandeau-nuit` | `assets/panneaux/bandeau-nuit.webp` | illustration | 610 × 336 | non | Même cadrage la nuit : ciel bleu nuit, lune blanche, 2 tours de guet, cimetière en silhouette. | à faire |
-| 9 | `bandeau-nuit-rouge` | `assets/panneaux/bandeau-nuit-rouge.webp` | illustration | 610 × 336 | non | Même cadrage : ciel rouge, lune de sang. | à faire |
+| 7 | `bandeau-jour` | `assets/extraits/bandeau-jour.webp` | illustration | 610 × 336 | non | Fond du panneau « JOUR » : papier crème vieilli, soleil jaune à droite, silhouette noire d'une tour de guet et de clôtures en bas. Zone de gauche (≈ 40 %) et bande du bas (≈ 50 px) **calmes** pour le texte et les losanges. | livré (extrait de la maquette) |
+| 8 | `bandeau-nuit` | `assets/extraits/bandeau-nuit.webp` | illustration | 610 × 336 | non | Même cadrage la nuit : ciel bleu nuit, lune blanche, 2 tours de guet, cimetière en silhouette. | livré (extrait de la maquette) |
+| 9 | `bandeau-nuit-rouge` | `assets/extraits/bandeau-nuit-rouge.webp` | illustration | 610 × 336 | non | Même cadrage : ciel rouge, lune de sang. | livré (extrait de la maquette) |
 | 10 | `panneau-papier` | `assets/ui/panels/panel_paper_medium.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre « papier » (panneau SHELTER) : papier crème taché, liseré sombre, coins usés. | livré |
 | 11 | `panneau-sombre` | `assets/ui/panels/panel_dark_medium.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre sombre (deck, réserve, défausse, liste, zombies, vitesse, menu bas) : métal noirci, bord brun fin, rivets discrets dans les coins. | livré |
-| 12 | `illus-abri` | `assets/panneaux/illus-abri.png` | illustration | 340 × 140 | oui | Silhouette noire d'un fort/bâtiment fortifié avec tours, style encre (panneau SHELTER). | à faire |
-| 13 | `illus-horde` | `assets/panneaux/illus-horde.png` | illustration | 236 × 200 | oui | Trois silhouettes de zombies rouge vif (#e0291c), de face, épaules tombantes. | à faire |
+| 12 | `illus-abri` | `assets/extraits/illus-abri.png` | illustration | 340 × 140 | oui | Silhouette noire d'un fort/bâtiment fortifié avec tours, style encre (panneau SHELTER). | livré (extrait de la maquette) |
+| 13 | `illus-horde` | `assets/extraits/illus-horde.png` | illustration | 236 × 200 | oui | Trois silhouettes de zombies rouge vif (#e0291c), de face, épaules tombantes. | livré (extrait de la maquette) |
 
 ## D. Cartes
 
@@ -110,13 +122,13 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
 | 26 | `bouton-ligne` | `assets/ui/cards/list_row_disabled.png, assets/ui/cards/list_row_normal.png, assets/ui/cards/list_row_selected.png` | bouton | 552 × 88 (×4) | oui | Ligne de liste en papier crème. **actif** : liseré rouge lumineux. **desactive** : gris. Garder à droite un emplacement libre pour la pastille du nombre. | livré |
-| 27 | `liste-barricade` | `assets/icones/liste-barricade.png` | icone | 112 × 72 | oui | Planches en croix, encre noire. | à faire |
-| 28 | `liste-cloture` | `assets/icones/liste-cloture.png` | icone | 112 × 72 | oui | Clôture de piquets. | à faire |
-| 29 | `liste-epave` | `assets/icones/liste-epave.png` | icone | 112 × 72 | oui | Voiture de profil. | à faire |
-| 30 | `liste-projecteur` | `assets/icones/liste-projecteur.png` | icone | 112 × 72 | oui | Projecteur sur trépied. | à faire |
-| 31 | `liste-lance-flammes` | `assets/icones/liste-lance-flammes.png` | icone | 112 × 72 | oui | Lance-flammes. | à faire |
-| 32 | `liste-tireur` | `assets/icones/liste-tireur.png` | icone | 112 × 72 | oui | Tireur accroupi. | à faire |
-| 33 | `liste-tourelle` | `assets/icones/liste-tourelle.png` | icone | 112 × 72 | oui | Tourelle sur trépied. | à faire |
+| 27 | `liste-barricade` | `assets/extraits/liste-barricade.png` | icone | 112 × 72 | oui | Planches en croix, encre noire. | livré (extrait de la maquette) |
+| 28 | `liste-cloture` | `assets/extraits/liste-cloture.png` | icone | 112 × 72 | oui | Clôture de piquets. | livré (extrait de la maquette) |
+| 29 | `liste-epave` | `assets/extraits/liste-epave.png` | icone | 112 × 72 | oui | Voiture de profil. | livré (extrait de la maquette) |
+| 30 | `liste-projecteur` | `assets/extraits/liste-projecteur.png` | icone | 112 × 72 | oui | Projecteur sur trépied. | livré (extrait de la maquette) |
+| 31 | `liste-lance-flammes` | `assets/extraits/liste-lance-flammes.png` | icone | 112 × 72 | oui | Lance-flammes. | livré (extrait de la maquette) |
+| 32 | `liste-tireur` | `assets/extraits/liste-tireur.png` | icone | 112 × 72 | oui | Tireur accroupi. | livré (extrait de la maquette) |
+| 33 | `liste-tourelle` | `assets/extraits/liste-tourelle.png` | icone | 112 × 72 | oui | Tourelle sur trépied. | livré (extrait de la maquette) |
 
 ## F. Boutons
 
@@ -131,9 +143,9 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 | # | Clé | Fichier | Type | Taille | Statut |
 |---|---|---|---|---|---|
 | 37 | `icone-son` | `assets/ui/icons/icon_speaker.png` | icone | 96 × 96 | livré |
-| 38 | `icone-son-coupe` | `assets/icones/son-coupe.png` | icone | 96 × 96 | à faire |
+| 38 | `icone-son-coupe` | `assets/extraits/son-coupe.png` | icone | 96 × 96 | livré (dérivé de l'icône du pack (barre rouge)) |
 | 39 | `icone-musique` | `assets/ui/icons/icon_music.png` | icone | 96 × 96 | livré |
-| 40 | `icone-musique-coupee` | `assets/icones/musique-coupee.png` | icone | 96 × 96 | à faire |
+| 40 | `icone-musique-coupee` | `assets/extraits/musique-coupee.png` | icone | 96 × 96 | livré (dérivé de l'icône du pack (barre rouge)) |
 | 41 | `icone-plein-ecran` | `assets/ui/icons/icon_fullscreen.png` | icone | 96 × 96 | livré |
 | 42 | `icone-stats` | `assets/ui/icons/icon_chart.png` | icone | 96 × 96 | livré |
 | 43 | `icone-options` | `assets/ui/icons/icon_gear.png` | icone | 96 × 96 | livré |
