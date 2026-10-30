@@ -17,11 +17,22 @@ Règles communes :
 
 ## A. Fonds d'écran
 
+**Ils couvrent tout l'écran, sans coupure.** Une seule scène continue peinte d'un bord à l'autre. On la voit à droite de l'interface,
+mais aussi entre les panneaux, dans les coins transparents de la cour et sur les bords de l'écran.
+- **3072 × 2048 px** (ratio 3:2), WebP qualité ≈ 85, opaque, **aucun élément d'interface** dessiné dedans.
+- Le code l'affiche en `cover` : selon le format de l'écran, jusqu'à **12 % de chaque bord peut être rogné**. Ne rien mettre d'important
+  dans ces marges, et prolonger naturellement le paysage jusqu'aux bords (pas de vignette noire, pas de bord vide).
+- **Les 3 versions ont exactement le même cadrage** (même horizon, même tour, mêmes palissades aux mêmes endroits). Seuls le ciel,
+  la lumière et les couleurs changent, pour que le passage jour → nuit ne fasse pas sauter l'image.
+- Composition : horizon vers 60 % de la hauteur. Tour de guet en bois et palissade au premier plan **dans le tiers droit** (x > 79 %),
+  ville en ruine au loin, désert et montagnes. La partie centrale et la partie gauche, cachées par le plateau et les panneaux,
+  restent du paysage simple (sol, palissade, broussailles) qui se raccorde sans couture.
+
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 1 | `decor-jour` | `assets/fonds/decor-jour.webp` | fond | 1536 × 1024 | non | Paysage de jour, visible surtout à droite (x > 1210) et sur les bords : ciel bleu avec nuages, désert ocre, montagnes, ville en ruine au loin, tour de guet en bois et palissade au premier plan à droite, buissons. Rien d'interface. | proposé |
-| 2 | `decor-nuit` | `assets/fonds/decor-nuit.webp` | fond | 1536 × 1024 | non | Même paysage la nuit : ciel bleu nuit, pleine lune blanche, ville éclairée au loin, tour avec une lampe jaune. | proposé |
-| 3 | `decor-nuit-rouge` | `assets/fonds/decor-nuit-rouge.webp` | fond | 1536 × 1024 | non | Même paysage sous une lune de sang : ciel rouge sombre, grosse lune rouge, silhouettes noires, lampe rouge sur la tour. | proposé |
+| 1 | `decor-jour` | `assets/fonds/decor-jour.webp` | fond | 3072 × 2048 | non | Paysage de jour, visible surtout à droite (x > 1210) et sur les bords : ciel bleu avec nuages, désert ocre, montagnes, ville en ruine au loin, tour de guet en bois et palissade au premier plan à droite, buissons. Rien d'interface. | à faire |
+| 2 | `decor-nuit` | `assets/fonds/decor-nuit.webp` | fond | 3072 × 2048 | non | Même paysage la nuit : ciel bleu nuit, pleine lune blanche, ville éclairée au loin, tour avec une lampe jaune. | à faire |
+| 3 | `decor-nuit-rouge` | `assets/fonds/decor-nuit-rouge.webp` | fond | 3072 × 2048 | non | Même paysage sous une lune de sang : ciel rouge sombre, grosse lune rouge, silhouettes noires, lampe rouge sur la tour. | à faire |
 
 ## B. Plateau (cour de l'abri, vue de dessus)
 
@@ -46,13 +57,13 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 7 | `bandeau-jour` | `assets/panneaux/bandeau-jour.webp` | illustration | 610 × 336 | non | Fond du panneau « JOUR » : papier crème vieilli, soleil jaune à droite, silhouette noire d'une tour de guet et de clôtures en bas. Zone de gauche (≈ 40 %) et bande du bas (≈ 50 px) **calmes** pour le texte et les losanges. | proposé |
-| 8 | `bandeau-nuit` | `assets/panneaux/bandeau-nuit.webp` | illustration | 610 × 336 | non | Même cadrage la nuit : ciel bleu nuit, lune blanche, 2 tours de guet, cimetière en silhouette. | proposé |
-| 9 | `bandeau-nuit-rouge` | `assets/panneaux/bandeau-nuit-rouge.webp` | illustration | 610 × 336 | non | Même cadrage : ciel rouge, lune de sang. | proposé |
-| 10 | `panneau-papier` | `assets/panneaux/panneau-papier.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre « papier » (panneau SHELTER) : papier crème taché, liseré sombre, coins usés. | proposé |
-| 11 | `panneau-sombre` | `assets/panneaux/panneau-sombre.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre sombre (deck, réserve, défausse, liste, zombies, vitesse, menu bas) : métal noirci, bord brun fin, rivets discrets dans les coins. | proposé |
-| 12 | `illus-abri` | `assets/panneaux/illus-abri.png` | illustration | 340 × 140 | oui | Silhouette noire d'un fort/bâtiment fortifié avec tours, style encre (panneau SHELTER). | proposé |
-| 13 | `illus-horde` | `assets/panneaux/illus-horde.png` | illustration | 236 × 200 | oui | Trois silhouettes de zombies rouge vif (#e0291c), de face, épaules tombantes. | proposé |
+| 7 | `bandeau-jour` | `assets/panneaux/bandeau-jour.webp` | illustration | 610 × 336 | non | Fond du panneau « JOUR » : papier crème vieilli, soleil jaune à droite, silhouette noire d'une tour de guet et de clôtures en bas. Zone de gauche (≈ 40 %) et bande du bas (≈ 50 px) **calmes** pour le texte et les losanges. | à faire |
+| 8 | `bandeau-nuit` | `assets/panneaux/bandeau-nuit.webp` | illustration | 610 × 336 | non | Même cadrage la nuit : ciel bleu nuit, lune blanche, 2 tours de guet, cimetière en silhouette. | à faire |
+| 9 | `bandeau-nuit-rouge` | `assets/panneaux/bandeau-nuit-rouge.webp` | illustration | 610 × 336 | non | Même cadrage : ciel rouge, lune de sang. | à faire |
+| 10 | `panneau-papier` | `assets/panneaux/panneau-papier.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre « papier » (panneau SHELTER) : papier crème taché, liseré sombre, coins usés. | à faire |
+| 11 | `panneau-sombre` | `assets/panneaux/panneau-sombre.png` | cadre-9 | 128 × 128, bords 24 px | autour | Cadre sombre (deck, réserve, défausse, liste, zombies, vitesse, menu bas) : métal noirci, bord brun fin, rivets discrets dans les coins. | à faire |
+| 12 | `illus-abri` | `assets/panneaux/illus-abri.png` | illustration | 340 × 140 | oui | Silhouette noire d'un fort/bâtiment fortifié avec tours, style encre (panneau SHELTER). | à faire |
+| 13 | `illus-horde` | `assets/panneaux/illus-horde.png` | illustration | 236 × 200 | oui | Trois silhouettes de zombies rouge vif (#e0291c), de face, épaules tombantes. | à faire |
 
 ## D. Cartes
 
@@ -62,7 +73,7 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 14 | `dos-carte` | `assets/cartes/dos-carte.webp` | illustration | 224 × 300 | non | Dos de carte : fond rouge très sombre, symbole biohazard rouge lumineux, cadre crème fin. | proposé |
+| 14 | `dos-carte` | `assets/cartes/dos-carte.webp` | illustration | 224 × 300 | non | Dos de carte : fond rouge très sombre, symbole biohazard rouge lumineux, cadre crème fin. | à faire |
 | 15a | `carte-modele` | `assets/cartes/carte-modele.webp` | illustration | 1024 × 1536 | non | Carte complète fournie par le propriétaire (Traqueur), utilisée pour toutes les cartes. | validé |
 | 15 | `cadre-carte` | `assets/cartes/cadre-carte.png` | illustration | 316 × 424 | oui (fenêtre) | Cadre de carte : papier crème vieilli, bord sombre, **fenêtre transparente** pour l'illustration (x 20→296, y 24→304) et bandeau du nom en bas (**vide**). Pas de pastille de coût (le code la dessine). | refusé |
 | 16 | `carte-barricade` | `assets/cartes/carte-barricade.webp` | illustration | 276 × 280 | non | Planches clouées en croix, encre noire sur papier, éclaboussures grises. | refusé |
@@ -80,37 +91,37 @@ le code les pose par-dessus. Le bas (sous le sol) est un muret de bois sombre.
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 26 | `bouton-ligne` | `assets/boutons/ligne-{normal,survol,actif,desactive}.png` | bouton | 552 × 88 (×4) | oui | Ligne de liste en papier crème. **actif** : liseré rouge lumineux. **desactive** : gris. Garder à droite un emplacement libre pour la pastille du nombre. | proposé |
-| 27 | `liste-barricade` | `assets/icones/liste-barricade.png` | icone | 112 × 72 | oui | Planches en croix, encre noire. | proposé |
-| 28 | `liste-cloture` | `assets/icones/liste-cloture.png` | icone | 112 × 72 | oui | Clôture de piquets. | proposé |
-| 29 | `liste-epave` | `assets/icones/liste-epave.png` | icone | 112 × 72 | oui | Voiture de profil. | proposé |
-| 30 | `liste-projecteur` | `assets/icones/liste-projecteur.png` | icone | 112 × 72 | oui | Projecteur sur trépied. | proposé |
-| 31 | `liste-lance-flammes` | `assets/icones/liste-lance-flammes.png` | icone | 112 × 72 | oui | Lance-flammes. | proposé |
-| 32 | `liste-tireur` | `assets/icones/liste-tireur.png` | icone | 112 × 72 | oui | Tireur accroupi. | proposé |
-| 33 | `liste-tourelle` | `assets/icones/liste-tourelle.png` | icone | 112 × 72 | oui | Tourelle sur trépied. | proposé |
+| 26 | `bouton-ligne` | `assets/boutons/ligne-{normal,survol,actif,desactive}.png` | bouton | 552 × 88 (×4) | oui | Ligne de liste en papier crème. **actif** : liseré rouge lumineux. **desactive** : gris. Garder à droite un emplacement libre pour la pastille du nombre. | à faire |
+| 27 | `liste-barricade` | `assets/icones/liste-barricade.png` | icone | 112 × 72 | oui | Planches en croix, encre noire. | à faire |
+| 28 | `liste-cloture` | `assets/icones/liste-cloture.png` | icone | 112 × 72 | oui | Clôture de piquets. | à faire |
+| 29 | `liste-epave` | `assets/icones/liste-epave.png` | icone | 112 × 72 | oui | Voiture de profil. | à faire |
+| 30 | `liste-projecteur` | `assets/icones/liste-projecteur.png` | icone | 112 × 72 | oui | Projecteur sur trépied. | à faire |
+| 31 | `liste-lance-flammes` | `assets/icones/liste-lance-flammes.png` | icone | 112 × 72 | oui | Lance-flammes. | à faire |
+| 32 | `liste-tireur` | `assets/icones/liste-tireur.png` | icone | 112 × 72 | oui | Tireur accroupi. | à faire |
+| 33 | `liste-tourelle` | `assets/icones/liste-tourelle.png` | icone | 112 × 72 | oui | Tourelle sur trépied. | à faire |
 
 ## F. Boutons
 
 | # | Clé | Fichier | Type | Taille | Transp. | Description | Statut |
 |---|---|---|---|---|---|---|---|
-| 34 | `bouton-affronter` | `assets/boutons/affronter-{normal,survol,appui,desactive}.png` | bouton | 592 × 256 (×4) | oui | Grand bouton rouge sang texturé, cadre sombre, 2 silhouettes de zombies sombres à gauche. **Sans texte.** | proposé |
-| 35 | `bouton-carre` | `assets/boutons/carre-{normal,survol,appui}.png` | bouton | 108 × 96 (×3) | oui | Petit bouton carré noir à bord métal (son, musique, plein écran, stats). Sans icône. | proposé |
-| 36 | `bouton-vitesse` | `assets/boutons/vitesse-{normal,survol,actif}.png` | bouton | 220 × 128 (×3) | oui | Segment du sélecteur de vitesse. **actif** : cadre jaune/or (#f0b429). Sans texte. | proposé |
+| 34 | `bouton-affronter` | `assets/boutons/affronter-{normal,survol,appui,desactive}.png` | bouton | 592 × 256 (×4) | oui | Grand bouton rouge sang texturé, cadre sombre, 2 silhouettes de zombies sombres à gauche. **Sans texte.** | à faire |
+| 35 | `bouton-carre` | `assets/boutons/carre-{normal,survol,appui}.png` | bouton | 108 × 96 (×3) | oui | Petit bouton carré noir à bord métal (son, musique, plein écran, stats). Sans icône. | à faire |
+| 36 | `bouton-vitesse` | `assets/boutons/vitesse-{normal,survol,actif}.png` | bouton | 220 × 128 (×3) | oui | Segment du sélecteur de vitesse. **actif** : cadre jaune/or (#f0b429). Sans texte. | à faire |
 
 ## G. Icônes de l'interface (blanc cassé #ece3cf, fond transparent)
 
 | # | Clé | Fichier | Type | Taille | Statut |
 |---|---|---|---|---|---|
-| 37 | `icone-son` | `assets/icones/son.png` | icone | 96 × 96 | proposé |
-| 38 | `icone-son-coupe` | `assets/icones/son-coupe.png` | icone | 96 × 96 | proposé |
-| 39 | `icone-musique` | `assets/icones/musique.png` | icone | 96 × 96 | proposé |
-| 40 | `icone-musique-coupee` | `assets/icones/musique-coupee.png` | icone | 96 × 96 | proposé |
-| 41 | `icone-plein-ecran` | `assets/icones/plein-ecran.png` | icone | 96 × 96 | proposé |
-| 42 | `icone-stats` | `assets/icones/stats.png` | icone | 96 × 96 | proposé |
-| 43 | `icone-options` | `assets/icones/options.png` | icone | 96 × 96 | proposé |
-| 44 | `icone-regles` | `assets/icones/regles.png` | icone | 96 × 96 | proposé |
-| 45 | `icone-reserve` | `assets/icones/reserve.png` | icone | 96 × 96 | proposé |
-| 46 | `icone-defausse` | `assets/icones/defausse.png` | icone | 96 × 96 | proposé |
+| 37 | `icone-son` | `assets/icones/son.png` | icone | 96 × 96 | à faire |
+| 38 | `icone-son-coupe` | `assets/icones/son-coupe.png` | icone | 96 × 96 | à faire |
+| 39 | `icone-musique` | `assets/icones/musique.png` | icone | 96 × 96 | à faire |
+| 40 | `icone-musique-coupee` | `assets/icones/musique-coupee.png` | icone | 96 × 96 | à faire |
+| 41 | `icone-plein-ecran` | `assets/icones/plein-ecran.png` | icone | 96 × 96 | à faire |
+| 42 | `icone-stats` | `assets/icones/stats.png` | icone | 96 × 96 | à faire |
+| 43 | `icone-options` | `assets/icones/options.png` | icone | 96 × 96 | à faire |
+| 44 | `icone-regles` | `assets/icones/regles.png` | icone | 96 × 96 | à faire |
+| 45 | `icone-reserve` | `assets/icones/reserve.png` | icone | 96 × 96 | à faire |
+| 46 | `icone-defausse` | `assets/icones/defausse.png` | icone | 96 × 96 | à faire |
 
 ## H. Pièces du plateau (vue de dessus, fond transparent)
 
