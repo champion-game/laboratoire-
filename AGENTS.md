@@ -29,11 +29,13 @@ Le code est fait par Claude Code (voir `CLAUDE.md`).
    Chaque interface a ses propres fichiers.
 7. Si une spec est ambiguë ou impossible à respecter, ne devine pas. Laisse la ligne `à faire` et explique le problème dans ta réponse.
 
-## La maquette : un modèle, pas une source à découper
+## La maquette : un modèle, pas une source à découper (pour toi)
 
 Quand l'interface a un dossier `reference/`, la maquette qu'il contient montre **à quoi doit ressembler** le résultat.
 
 - **Interdit** de découper, recadrer, détourer ou retoucher la maquette pour en tirer un visuel.
+  Seul Claude Code peut en extraire des visuels, sur décision du propriétaire, dans `assets/extraits/`.
+  Ne modifie pas ce dossier. Si une ligne de spec « extrait de la maquette » repasse à `à faire`, livre une version redessinée.
 - Chaque visuel est **redessiné proprement** : même style, mêmes couleurs, même matière. Il doit être exploitable
   par le code, c'est-à-dire sans texte incrusté (sauf demande), sans ombre ni fond de la maquette, au bon format
   et avec la bonne transparence.
